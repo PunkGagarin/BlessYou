@@ -25,12 +25,12 @@ public class CustomKeyValue<K, V> {
         _value = value;
     }
 
-    public K key {
+    public K Key {
         get => _key;
         set => _key = value;
     }
 
-    public V value {
+    public V Value {
         get => _value;
         set => _value = value;
     }

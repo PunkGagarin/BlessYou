@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay.Patients.PatientQueue;
 using Gameplay.Treatment;
 using UnityEngine;
 using Zenject;
@@ -65,6 +66,7 @@ namespace Gameplay
         private void StartTreatment()
         {
             Debug.Log($"Закончился первичный осмотр, Началось лечение пациентов");
+            _queueManager.StopPatientQueue();
             _treatmentManager.StartPatientTreatment();
         }
 

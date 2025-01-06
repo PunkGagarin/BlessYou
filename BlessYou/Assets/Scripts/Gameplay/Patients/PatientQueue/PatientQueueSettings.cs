@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Gameplay
 {
     [CreateAssetMenu(menuName = "Gameplay/Settings/PatientQueueSO", fileName = "PatientQueueSO")]
-    public class PatientQueueSo : ScriptableObject
+    public class PatientQueueSettings : ScriptableObject
     {
         [SerializeField]
         private int _defaultPatients = 5;

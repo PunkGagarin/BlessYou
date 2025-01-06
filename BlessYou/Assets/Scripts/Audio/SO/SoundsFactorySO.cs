@@ -14,10 +14,10 @@ namespace Audio
         public AudioClip GetRandomClipByType(GameAudioType type)
         {
             AudioClip clipToReturn = null;
-            var audioList = _clips.FirstOrDefault(el => el.key == type);
+            var audioList = _clips.FirstOrDefault(el => el.Key == type);
             if (audioList != null)
             {
-                clipToReturn = audioList.value[Random.Range(0, audioList.value.Count)];
+                clipToReturn = audioList.Value[Random.Range(0, audioList.Value.Count)];
             }
             
             if (clipToReturn == null)
@@ -31,11 +31,11 @@ namespace Audio
         public AudioClip GetClipByTypeAndIndex(GameAudioType type, int index)
         {
             AudioClip clipToReturn = null;
-            var audioList = _clips.FirstOrDefault(el => el.key == type);
+            var audioList = _clips.FirstOrDefault(el => el.Key == type);
             
             if (audioList != null)
             {
-                clipToReturn = audioList.value[index];
+                clipToReturn = audioList.Value[index];
             }
             
             if (clipToReturn == null)

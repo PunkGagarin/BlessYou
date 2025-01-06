@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Gameplay.Patients.InitialExam;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay
+namespace Gameplay.Patients.PatientQueue
 {
     public class PatientQueueManager : MonoBehaviour
     {
 
         [Inject] private PatientQueueView _view;
-        [Inject] private PatientQueueSo _queueSettings;
+        [Inject] private PatientQueueSettings _queueSettings;
         [Inject] private PatientGenerator _patientGenerator;
         [Inject] private InitialExaminationManager _initialExaminationManager;
 
@@ -21,7 +22,7 @@ namespace Gameplay
         {
             _view.NextPatientButton.onClick.AddListener(ProceedNextPatient);
         }
-        
+
         private void OnDestroy()
         {
             _view.NextPatientButton.onClick.AddListener(ProceedNextPatient);
@@ -32,6 +33,11 @@ namespace Gameplay
         {
             GeneratePatientsForCurrentDay(currentDay);
             _view.ShowIndicator();
+        }
+
+        public void StopPatientQueue()
+        {
+            _view.HideIndicator();
         }
 
         private void GeneratePatientsForCurrentDay(int currentDay)

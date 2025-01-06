@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Gameplay.Patients.InitialExam;
+using Gameplay.Patients.PatientQueue;
+using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay.Patients
@@ -6,8 +9,8 @@ namespace Gameplay.Patients
     public class PatientsInstaller : MonoInstaller
     {
 
-        [SerializeField]
-        private PatientQueueSo _patientQueueSo;
+        [FormerlySerializedAs("_patientQueueSo")] [SerializeField]
+        private PatientQueueSettings patientQueueSettings;
 
         [SerializeField]
         private PatientQueueManager _queueManager;
@@ -24,7 +27,7 @@ namespace Gameplay.Patients
 
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<PatientQueueSo>().FromInstance(_patientQueueSo).AsSingle();
+            Container.BindInterfacesAndSelfTo<PatientQueueSettings>().FromInstance(patientQueueSettings).AsSingle();
             Container.BindInterfacesAndSelfTo<PatientQueueManager>().FromInstance(_queueManager).AsSingle();
             Container.BindInterfacesAndSelfTo<PatientQueueView>().FromInstance(_patientQueueView).AsSingle();
             

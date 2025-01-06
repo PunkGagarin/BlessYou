@@ -1,26 +1,35 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.Patients
+namespace Gameplay.Patients.InitialExam
 {
+    
     public class InitialExaminationView : MonoBehaviour
     {
 
-        [SerializeField]
-        private Button _acceptButton;
+        [field: SerializeField]
+        public Button AcceptButton { get; private set; }
+        
+        [field: SerializeField]
+        public Button QuickHealButton { get; private set; }
+        
+        [field: SerializeField]
+        public Button EventButton { get; private set; }
+        
+        [field: SerializeField]
+        public Button RejectButton { get; private set; }
 
         [SerializeField]
         private GameObject _content;
 
         private void Awake()
         {
-            _acceptButton.onClick.AddListener(Hide);
+            AcceptButton.onClick.AddListener(Hide);
         }
 
         private void OnDestroy()
         {
-            _acceptButton.onClick.AddListener(Hide);
+            AcceptButton.onClick.AddListener(Hide);
         }
 
         public void Show()
@@ -37,6 +46,16 @@ namespace Gameplay.Patients
         {
             Debug.Log("Показываем информацию о пациенте");
             Show();
+        }
+
+        public void SetAcceptButtonStatus(bool acceptButtonActive)
+        {
+            AcceptButton.interactable = acceptButtonActive;
+        }
+
+        public void SetQuickHealButtonStatus(bool quickHealButtonActive)
+        {
+            QuickHealButton.interactable = quickHealButtonActive;
         }
     }
 }
