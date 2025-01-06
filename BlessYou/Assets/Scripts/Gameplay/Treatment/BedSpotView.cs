@@ -1,11 +1,16 @@
+using System;
 using UnityEngine;
 
 public class BedSpotView : MonoBehaviour
 {
     
-    [SerializeField]
     private Collider2D _collider2D;
-    
+
+    private void Awake()
+    {
+        _collider2D = GetComponent<Collider2D>();
+    }
+
     public void TurnOnInterract()
     {
         _collider2D.enabled = true;
