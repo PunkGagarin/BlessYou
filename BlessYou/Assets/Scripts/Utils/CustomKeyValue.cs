@@ -34,4 +34,10 @@ public class CustomKeyValue<K, V> {
         get => _value;
         set => _value = value;
     }
+
+    public void Deconstruct(out K key, out V value)
+    {
+        key = _key;
+        value = _value;
+    }
 }

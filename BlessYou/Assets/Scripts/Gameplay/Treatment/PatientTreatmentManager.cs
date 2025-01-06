@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay
+namespace Gameplay.Treatment
 {
     public class PatientTreatmentManager : MonoBehaviour
     {
 
-        private Dictionary<BedSpotView, Patient> _beds = new Dictionary<BedSpotView, Patient>();
+        private Dictionary<BedSpotView, Patient> _beds = new();
 
         public event Action EndOfTreatment = delegate { };
 

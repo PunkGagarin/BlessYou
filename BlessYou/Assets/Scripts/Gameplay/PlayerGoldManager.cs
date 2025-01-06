@@ -9,7 +9,7 @@ namespace Gameplay
         
         public void GetRewardForPreviousDay()
         {
-            throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
     }
 }

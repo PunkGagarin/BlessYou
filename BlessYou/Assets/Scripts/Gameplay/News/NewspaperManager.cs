@@ -12,10 +12,10 @@ namespace Gameplay
         
         public void GenerateDayNews(int currentDay)
         {
-            throw new System.NotImplementedException();
-            string dayNews = "Day " + currentDay + " news";
-            _view.FillNews(dayNews);
-            _view.ShowNewsIndicator();
+            // throw new System.NotImplementedException();
+            // string dayNews = "Day " + currentDay + " news";
+            // _view.FillNews(dayNews);
+            // _view.ShowNewsIndicator();
         }
     }
 

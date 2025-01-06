@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay.Treatment;
 using UnityEngine;
 using Zenject;
 
@@ -12,13 +13,15 @@ namespace Gameplay
         [Inject] private PatientTreatmentManager _treatmentManager;
         [Inject] private EndDayButtonView _endDayButtonView;
 
-        private int _currentDay = 1;
+        private int _currentDay;
 
         private void Awake()
         {
             _queueManager.EndOfPatientQueue += StartTreatment;
             _treatmentManager.EndOfTreatment += ShowEndDayButton;
             _endDayButtonView.EndDayButton.onClick.AddListener(EndCurrentDay);
+
+            StartNewDay();
         }
 
         private void OnDestroy()
@@ -31,6 +34,7 @@ namespace Gameplay
         private void StartNewDay()
         {
             _currentDay++;
+            Debug.Log($"Начался новый день: {_currentDay}");
 
             ClearPreviousDay();
             GiveRewardForPreviousDay();
@@ -55,11 +59,12 @@ namespace Gameplay
 
         private void StartPatientQueue()
         {
-            _queueManager.GeneratePatientsForCurrentDay();
+            _queueManager.StartPatientQueue(_currentDay);
         }
 
         private void StartTreatment()
         {
+            Debug.Log($"Закончился первичный осмотр, Началось лечение пациентов");
             _treatmentManager.StartPatientTreatment();
         }
 
@@ -70,6 +75,7 @@ namespace Gameplay
 
         private void EndCurrentDay()
         {
+            Debug.Log($"День {_currentDay} закончился");
             StartNewDay();
         }
     }
