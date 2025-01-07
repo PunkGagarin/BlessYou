@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438cb93ec6ebe99409d29d3806b6f93c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider2D: {fileID: 8271509148200544610}
   _unlockedBedSprite: {fileID: 2877212921883359169}
   _lockedBedSprite: {fileID: 6690047559411816623}
   _patientSprite: {fileID: 6324713593672540225}

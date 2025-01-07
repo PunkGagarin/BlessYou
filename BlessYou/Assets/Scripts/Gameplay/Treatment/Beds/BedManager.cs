@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
@@ -15,8 +16,9 @@ namespace Gameplay.Treatment.Beds
 
         private readonly Dictionary<BedSpotView, BedInfo> _beds = new();
 
-        //todo: move to Init method if have conflics with awake-start
-        private void Start()
+        public event Action<Patient, BedSpotView> OnBedWithPatientInteracted = delegate { };
+
+        private void Awake()
         {
             InitBeds();
         }
@@ -38,17 +40,39 @@ namespace Gameplay.Treatment.Beds
                 {
                     bedView.Lock();
                 }
+
+                bedView.OnBedClicked += bedViewOnOnBedClicked(bedView);
             }
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var bedView in _beds.Keys)
+                bedView.OnBedClicked -= bedViewOnOnBedClicked(bedView);
+        }
+
+        private Action bedViewOnOnBedClicked(BedSpotView bedView)
+        {
+            return () => OnBedInterracted(bedView);
+        }
+
+        private void OnBedInterracted(BedSpotView bedView)
+        {
+            OnBedWithPatientInteracted.Invoke(_beds[bedView].Patient, bedView);
         }
 
         public void LayDownPatientToFirstFreeBed(Patient patient)
         {
-            if (TryGetFreeBed(out BedInfo bed))
+            foreach (var (view, bed) in _beds.Where(beds => beds.Value.IsUnlocked))
             {
-                bed.Patient = patient;
-                var bedView = _beds.First(bedPair => bedPair.Value == bed).Key;
-                bedView.SetPatient(patient);
+                if (!bed.HasPatient)
+                {
+                    bed.Patient = patient;
+                    view.SetPatient(patient);
+                    return;
+                }
             }
+            Debug.LogError("trying to set patient while we have no free beds");
         }
 
         private bool TryGetFreeBed(out BedInfo bed)
@@ -67,19 +91,38 @@ namespace Gameplay.Treatment.Beds
 
         public void MakeBedsWithPatientInteractable()
         {
+            Debug.Log("making beds interactable");
             foreach (var (view, bedInfo) in _beds)
             {
-                if(bedInfo.HasPatient)
+                if (bedInfo.HasPatient)
                     view.TurnOnInteract();
             }
         }
 
         public void CleanBeds()
         {
-            foreach (var (view, bed) in _beds.Where(bed => bed.Value.IsUnlocked))
+            foreach (var (view, bed) in _beds.Where(bed => bed.Value.HasPatient))
             {
-                bed.Patient = null;
+                if (bed.Patient.IsDead || bed.Patient.IsHealed)
+                {
+                    bed.Patient = null;
+                    view.CleanFromPatient();
+                }
             }
+        }
+
+        public bool AllPatientsHealed()
+        {
+            return _beds.Where(bed => bed.Value.HasPatient)
+                .All(bed => bed.Value.Patient.HasTreatment);
+        }
+
+        public List<Patient> GetAllPatientsInBeds()
+        {
+            return _beds
+                .Where(bed => bed.Value.HasPatient)
+                .Select(bed => bed.Value.Patient)
+                .ToList();
         }
     }
 }

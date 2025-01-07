@@ -1,5 +1,6 @@
 ﻿using System;
 using Gameplay.Patients.PatientQueue;
+using Gameplay.Results;
 using Gameplay.Treatment;
 using UnityEngine;
 using Zenject;
@@ -8,7 +9,7 @@ namespace Gameplay
 {
     public class DayCycleManager : MonoBehaviour
     {
-        [Inject] private PlayerGoldManager _playerGoldManager;
+        [Inject] private TreatmentResultManager _treatmentResultManager;
         [Inject] private NewspaperManager _newspaperManager;
         [Inject] private PatientQueueManager _queueManager;
         [Inject] private PatientTreatmentManager _treatmentManager;
@@ -16,7 +17,7 @@ namespace Gameplay
 
         private int _currentDay;
 
-        private void Awake()
+        private void Start()
         {
             _queueManager.EndOfPatientQueue += StartTreatment;
             _treatmentManager.EndOfTreatment += ShowEndDayButton;
@@ -37,8 +38,8 @@ namespace Gameplay
             _currentDay++;
             Debug.Log($"Начался новый день: {_currentDay}");
 
-            ClearPreviousDay();
             GiveRewardForPreviousDay();
+            ClearPreviousDay();
             ShowNews();
             StartPatientQueue();
         }
@@ -50,7 +51,7 @@ namespace Gameplay
 
         private void GiveRewardForPreviousDay()
         {
-            _playerGoldManager.GetRewardForPreviousDay();
+            _treatmentResultManager.CalculateResults();
         }
 
         private void ShowNews()
@@ -65,8 +66,6 @@ namespace Gameplay
 
         private void StartTreatment()
         {
-            Debug.Log($"Закончился первичный осмотр, Началось лечение пациентов");
-            _queueManager.StopPatientQueue();
             _treatmentManager.StartPatientTreatment();
         }
 

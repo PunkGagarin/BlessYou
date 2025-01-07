@@ -5,6 +5,7 @@ using UnityEngine;
 public class BedSpotView : MonoBehaviour
 {
 
+    [SerializeField]
     private Collider2D _collider2D;
 
     [SerializeField]
@@ -16,11 +17,8 @@ public class BedSpotView : MonoBehaviour
     [SerializeField]
     private SpriteRenderer _patientSprite;
 
+    public event Action OnBedClicked = delegate { };
 
-    private void Awake()
-    {
-        _collider2D = GetComponent<Collider2D>();
-    }
 
     public void TurnOnInteract()
     {
@@ -35,11 +33,13 @@ public class BedSpotView : MonoBehaviour
     public void OnMouseDown()
     {
         Interract();
+        
     }
 
     private void Interract()
     {
         Debug.Log("ты кликнул на кровать");
+        OnBedClicked.Invoke();
     }
 
     public void Unlock()
@@ -61,5 +61,10 @@ public class BedSpotView : MonoBehaviour
     public void SetPatient(Patient patient)
     {
         _patientSprite.gameObject.SetActive(true);
+    }
+
+    public void CleanFromPatient()
+    {
+        _patientSprite.gameObject.SetActive(false);
     }
 }

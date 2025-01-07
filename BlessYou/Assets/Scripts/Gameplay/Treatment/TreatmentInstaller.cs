@@ -8,10 +8,14 @@ namespace Gameplay.Treatment
 
         [SerializeField]
         private PatientTreatmentManager _patientTreatmentManager;
+        
+        [SerializeField]
+        private PatientTreatmentView _treatmentView;
 
         public override void InstallBindings()
         {
             Container.Bind<PatientTreatmentManager>().FromInstance(_patientTreatmentManager).AsSingle();
+            Container.Bind<PatientTreatmentView>().FromInstance(_treatmentView).AsSingle();
         }
         
     }

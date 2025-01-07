@@ -12,6 +12,8 @@ namespace Gameplay.Patients.InitialExam
 
         private Patient _currentPatient;
 
+        public event Action OnPatientDistributed = delegate { };
+
         private void Awake()
         {
             _view.AcceptButton.onClick.AddListener(LayDownPatient);
@@ -30,17 +32,20 @@ namespace Gameplay.Patients.InitialExam
         {
             _bedManager.LayDownPatientToFirstFreeBed(_currentPatient);
             _view.Hide();
+            OnPatientDistributed.Invoke();
         }
 
         private void KickOutPatient()
         {
             Debug.Log("Мы выгнали пациента");
             _view.Hide();
+            OnPatientDistributed.Invoke();
         }
 
         private void QuickHealPatient()
         {
             throw new NotImplementedException();
+            OnPatientDistributed.Invoke();
         }
 
         public void StartExaminationFor(Patient patient)

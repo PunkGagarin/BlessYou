@@ -8,26 +8,51 @@ namespace Gameplay.Treatment
 {
     public class PatientTreatmentManager : MonoBehaviour
     {
-
         [Inject] private BedManager _bedManager;
+        [Inject] private PatientTreatmentView _view;
+
+        private (Patient patient, BedSpotView bed) _bedWithCurrentPatient;
 
         public event Action EndOfTreatment = delegate { };
 
-        public void StartPatientTreatment()
+        private void Start()
         {
-            _bedManager.MakeBedsWithPatientInteractable();
+            _bedManager.OnBedWithPatientInteracted += ShowPatientTreatmentView;
+            _view.HealButton.onClick.AddListener(HealPatient);
         }
 
+        private void OnDestroy()
+        {
+            _bedManager.OnBedWithPatientInteracted -= ShowPatientTreatmentView;
+            _view.HealButton.onClick.RemoveListener(HealPatient);
+        }
+
+        private void HealPatient()
+        {
+            Debug.Log("Назначили пациенту лечение пациента");
+            _bedWithCurrentPatient.bed.TurnOffInteract();
+            _bedWithCurrentPatient.patient.HasTreatment = true;
+            _view.Hide();
+
+            EndTreatmentIfNoPatientsLeft();
+        }
+
+        private void EndTreatmentIfNoPatientsLeft()
+        {
+            if (_bedManager.AllPatientsHealed())
+                EndOfTreatment.Invoke();
+        }
+
+        private void ShowPatientTreatmentView(Patient patient, BedSpotView bed)
+        {
+            _bedWithCurrentPatient = (patient, bed);
+            _view.ShowPatientInfo(patient);
+        }
+
+        public void StartPatientTreatment()
+        {
+            EndTreatmentIfNoPatientsLeft();
+            _bedManager.MakeBedsWithPatientInteractable();
+        }
     }
 }
-        // private Dictionary<BedSpotView, Patient> _beds = new();
-        // public void StartPatientTreatment()
-        // {
-        //     foreach (var bed in _beds)
-        //     {
-        //         if (bed.Value != null)
-        //         {
-        //             bed.Key.TurnOnInteract();
-        //         }
-        //     }
-        // }
