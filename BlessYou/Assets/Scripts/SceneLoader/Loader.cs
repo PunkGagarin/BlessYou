@@ -4,24 +4,17 @@ namespace SceneLoader
 {
     public class Loader
     {
-        private static Scene targetScene;
+        private static Scenes _targetScenes;
 
-        public enum Scene
+        public void Load(Scenes targetScenes)
         {
-            MainMenuScene,
-            GamePlayScene,
-            LoadingScene
-        }
-
-        public void Load(Scene targetScene)
-        {
-            Loader.targetScene = targetScene;
-            SceneManager.LoadScene(Scene.LoadingScene.ToString());
+            _targetScenes = targetScenes;
+            SceneManager.LoadScene(Scenes.LoadingScene.ToString());
         }
 
         public void LoaderCallback()
         {
-            SceneManager.LoadScene(targetScene.ToString());
+            SceneManager.LoadScene(_targetScenes.ToString());
         }
     }
 }

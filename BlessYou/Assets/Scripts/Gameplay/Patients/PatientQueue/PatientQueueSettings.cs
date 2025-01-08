@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    [CreateAssetMenu(menuName = "Gameplay/Settings/PatientQueueSO", fileName = "PatientQueueSO")]
+    // [CreateAssetMenu(menuName = "Gameplay/Settings/PatientQueueSO", fileName = "PatientQueueSO")]
     public class PatientQueueSettings : ScriptableObject
     {
         [SerializeField]

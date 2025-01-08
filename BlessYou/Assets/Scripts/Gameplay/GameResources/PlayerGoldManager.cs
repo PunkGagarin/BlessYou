@@ -39,6 +39,16 @@ namespace Gameplay
             Gold -= _goldSettings.GoldPerDead;
             Gold = Mathf.Clamp(Gold, 0, 9999);
         }
+
+        public bool HasEnoughMoney(int familyFoodCost)
+        {
+            return _gold >= familyFoodCost;
+        }
+
+        public void SpendGold(int goldToSpend)
+        {
+            _gold -= goldToSpend;
+        }
     }
 
 }

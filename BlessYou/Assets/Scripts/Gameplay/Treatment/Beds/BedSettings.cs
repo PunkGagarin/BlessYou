@@ -2,7 +2,7 @@
 
 namespace Gameplay.Treatment.Beds
 {
-    [CreateAssetMenu(menuName = "Gameplay/Settings/BedSettings", fileName = "BedSettings")]
+    // [CreateAssetMenu(menuName = "Gameplay/Settings/BedSettings", fileName = "BedSettings")]
     public class BedSettings : ScriptableObject
     {
         [field: SerializeField]

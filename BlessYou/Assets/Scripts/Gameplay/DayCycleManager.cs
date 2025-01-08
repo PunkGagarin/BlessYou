@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay.DayResults;
 using Gameplay.Patients.PatientQueue;
 using Gameplay.Results;
 using Gameplay.Treatment;
@@ -14,6 +15,7 @@ namespace Gameplay
         [Inject] private PatientQueueManager _queueManager;
         [Inject] private PatientTreatmentManager _treatmentManager;
         [Inject] private EndDayButtonView _endDayButtonView;
+        [Inject] private FamilyManager _familyManager;
 
         private int _currentDay;
 
@@ -38,7 +40,7 @@ namespace Gameplay
             _currentDay++;
             Debug.Log($"Начался новый день: {_currentDay}");
 
-            GiveRewardForPreviousDay();
+            CalculatePreviousDay();
             ClearPreviousDay();
             ShowNews();
             StartPatientQueue();
@@ -49,8 +51,9 @@ namespace Gameplay
             _endDayButtonView.Hide();
         }
 
-        private void GiveRewardForPreviousDay()
+        private void CalculatePreviousDay()
         {
+            _familyManager.TrySpendFamilyFood(_currentDay);
             _treatmentResultManager.CalculateResults();
         }
 

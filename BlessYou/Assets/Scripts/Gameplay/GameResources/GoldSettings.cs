@@ -2,7 +2,7 @@
 
 namespace Gameplay
 {
-    [CreateAssetMenu(menuName = "Gameplay/Settings/GoldSettings", fileName = "GoldSettings")]
+    // [CreateAssetMenu(menuName = "Gameplay/Settings/GoldSettings", fileName = "GoldSettings")]
     public class GoldSettings : ScriptableObject
     {
         [field: SerializeField]
