@@ -41,14 +41,14 @@ namespace Gameplay.Treatment.Beds
                     bedView.Lock();
                 }
 
-                bedView.OnBedClicked += bedViewOnOnBedClicked(bedView);
+                bedView.OnClicked += bedViewOnOnBedClicked(bedView);
             }
         }
 
         private void OnDestroy()
         {
             foreach (var bedView in _beds.Keys)
-                bedView.OnBedClicked -= bedViewOnOnBedClicked(bedView);
+                bedView.OnClicked -= bedViewOnOnBedClicked(bedView);
         }
 
         private Action bedViewOnOnBedClicked(BedSpotView bedView)

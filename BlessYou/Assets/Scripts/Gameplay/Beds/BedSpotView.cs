@@ -1,12 +1,10 @@
 using System;
 using Gameplay;
+using Gameplay.Base;
 using UnityEngine;
 
-public class BedSpotView : MonoBehaviour
+public class BedSpotView : ClickableView
 {
-
-    [SerializeField]
-    private Collider2D _collider2D;
 
     [SerializeField]
     private SpriteRenderer _unlockedBedSprite;
@@ -17,9 +15,6 @@ public class BedSpotView : MonoBehaviour
     [SerializeField]
     private SpriteRenderer _patientSprite;
 
-    public event Action OnBedClicked = delegate { };
-
-
     public void TurnOnInteract()
     {
         _collider2D.enabled = true;
@@ -28,18 +23,6 @@ public class BedSpotView : MonoBehaviour
     public void TurnOffInteract()
     {
         _collider2D.enabled = false;
-    }
-
-    public void OnMouseDown()
-    {
-        Interract();
-        
-    }
-
-    private void Interract()
-    {
-        Debug.Log("ты кликнул на кровать");
-        OnBedClicked.Invoke();
     }
 
     public void Unlock()

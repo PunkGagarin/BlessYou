@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Gameplay.DayResults;
 using Gameplay.Treatment.Beds;
 using UnityEngine;
 using Zenject;
@@ -15,38 +16,48 @@ namespace Gameplay.Results
         [Inject] private BedManager _bedManager;
         [Inject] private PlayerGoldManager _goldManager;
 
+        public TreatmentResultInfo CurrentTreatmentResults { get; private set; } = new();
 
         public void CalculateResults()
         {
+            CurrentTreatmentResults = new TreatmentResultInfo();
             List<Patient> patients = _bedManager.GetAllPatientsInBeds();
-            foreach (var patient in patients)
+            int goldResult = 0;
+
+            foreach (Patient patient in patients)
             {
                 // Get AnamnesisCard
                 // Get heal result depends on AnamenesisCard
-                // set isDead flag
-                // give out reward for all alive and healed patients
 
                 bool treatmentResultFor = GetTreatmentResultFor(patient);
+                
                 Debug.Log($"Patient {patient} is healed or dead: {treatmentResultFor} ");
                 patient.IsHealed = treatmentResultFor;
                 patient.IsDead = !treatmentResultFor;
 
                 if (patient.IsHealed)
                 {
-                    _goldManager.AddGoldForHealedPatient(patient);
+                    goldResult += _goldManager.AddGoldForHealedPatient(patient);
+                    CurrentTreatmentResults.HealedPatients++;
+                    CurrentTreatmentResults.HealedPatientsList.Add(patient);
                 }
                 else if (patient.IsDead)
                 {
-                    _goldManager.GetPenaltyForDeadPatient(patient);
+                    goldResult += _goldManager.GetPenaltyForDeadPatient(patient);
+                    CurrentTreatmentResults.DeadPatients++;
+                    CurrentTreatmentResults.DeadPatientsList.Add(patient);
                 }
-
-                _bedManager.CleanBeds();
             }
+            CurrentTreatmentResults.GoldDifference = goldResult;
+
+            _bedManager.CleanBeds();
         }
 
         private bool GetTreatmentResultFor(Patient patient)
         {
+            //todo: implement me????
             return Random.value > 0.5f;
         }
     }
+
 }

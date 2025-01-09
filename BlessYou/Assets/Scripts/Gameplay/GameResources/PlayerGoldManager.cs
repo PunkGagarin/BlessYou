@@ -28,16 +28,20 @@ namespace Gameplay
             Gold = _goldSettings.InitialGold;
         }
 
-        public void AddGoldForHealedPatient(Patient patient)
+        public int AddGoldForHealedPatient(Patient patient)
         {
-            Gold += _goldSettings.GoldPerHealed;
+            int goldSettingsGoldPerHealed = _goldSettings.GoldPerHealed;    
+            Gold += goldSettingsGoldPerHealed;
             Gold = Mathf.Clamp(Gold, 0, 9999);
+            return goldSettingsGoldPerHealed;
         }
 
-        public void GetPenaltyForDeadPatient(Patient patient)
+        public int GetPenaltyForDeadPatient(Patient patient)
         {
-            Gold -= _goldSettings.GoldPerDead;
+            int goldSettingsGoldPerDead = _goldSettings.GoldPerDead;
+            Gold -= goldSettingsGoldPerDead;
             Gold = Mathf.Clamp(Gold, 0, 9999);
+            return goldSettingsGoldPerDead;
         }
 
         public bool HasEnoughMoney(int familyFoodCost)

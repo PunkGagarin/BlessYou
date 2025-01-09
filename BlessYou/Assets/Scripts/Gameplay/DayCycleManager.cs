@@ -1,5 +1,6 @@
 ﻿using System;
 using Gameplay.DayResults;
+using Gameplay.News;
 using Gameplay.Patients.PatientQueue;
 using Gameplay.Results;
 using Gameplay.Treatment;

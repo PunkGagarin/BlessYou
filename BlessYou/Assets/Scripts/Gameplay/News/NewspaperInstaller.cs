@@ -1,20 +1,21 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace Gameplay
+namespace Gameplay.News
 {
     public class NewspaperInstaller : MonoInstaller
     {
-        
         [SerializeField]
-        private NewspaperView _newspaperView;
-        
+        private NewspaperUI newspaperUI;
+
         [SerializeField]
-        private NewspaperManager _newspaperManager;
+        private TableView _tableView;
+
         public override void InstallBindings()
         {
-            Container.Bind<NewspaperView>().FromInstance(_newspaperView).AsSingle();
-            Container.Bind<NewspaperManager>().FromInstance(_newspaperManager).AsSingle();
+            Container.Bind<NewspaperUI>().FromInstance(newspaperUI).AsSingle();
+            Container.Bind<TableView>().FromInstance(_tableView).AsSingle();
+            Container.BindInterfacesAndSelfTo<NewspaperManager>().AsSingle();
         }
     }
 }

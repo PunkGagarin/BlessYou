@@ -1,21 +1,48 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using Gameplay.DayResults;
+using Gameplay.Results;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay
+namespace Gameplay.News
 {
-    public class NewspaperManager : MonoBehaviour
+    public class NewspaperManager : 
+        IInitializable, IDisposable
     {
 
-        [Inject] private NewspaperView _view;
+        [Inject] private NewspaperUI _ui;
+        [Inject] private TreatmentResultManager _treatmentResult;
+        [Inject] private TableView _tableView;
+        [Inject] private FamilyManager _familyManager;
         // [Inject] private NewsEventDataProvider _newsEventDataProvider;
-        
+
+        public void Initialize()
+        {
+            _tableView.OnClicked += OpenNewsUi;
+            _ui.CloseButton.onClick.AddListener(HideNewsUI);
+        }
+
+        public void Dispose()
+        {
+            _tableView.OnClicked -= OpenNewsUi;
+            _ui.CloseButton.onClick.RemoveListener(HideNewsUI);
+        }
+
+        private void OpenNewsUi()
+        {
+            _ui.Show();
+        }
+
+        private void HideNewsUI()
+        {
+            _ui.Hide();
+        }
+
         public void GenerateDayNews(int currentDay)
         {
-            // throw new System.NotImplementedException();
-            // string dayNews = "Day " + currentDay + " news";
-            // _view.FillNews(dayNews);
-            // _view.ShowNewsIndicator();
+            var treatResult = _treatmentResult.CurrentTreatmentResults;
+
+            _ui.SetInfo(treatResult, _familyManager.FamilyDaysWithoutFood, currentDay);
         }
     }
 
