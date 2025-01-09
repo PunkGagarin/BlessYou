@@ -9,7 +9,7 @@ namespace Gameplay
     {
 
         [Inject] private GoldSettings _goldSettings;
-        [Inject] private PlayerGoldView _goldView;
+        [Inject] private PlayerGoldUI _goldUI;
 
         private int _gold;
 
@@ -19,7 +19,7 @@ namespace Gameplay
             set
             {
                 _gold = value; 
-                _goldView.SetGold(value);
+                _goldUI.SetGold(value);
             }
         }
 

@@ -124,5 +124,19 @@ namespace Gameplay.Treatment.Beds
                 .Select(bed => bed.Value.Patient)
                 .ToList();
         }
+
+        public void UnlockNewBed()
+        {
+            var (bedViews, bedInfo) = _beds.FirstOrDefault(
+                bed => !bed.Value.IsUnlocked);
+
+            bedViews.Unlock();
+            bedInfo.IsUnlocked = true;
+        }
+
+        public bool HasBedsToUnlock()
+        {
+            return _beds.Any(bed => !bed.Value.IsUnlocked);
+        }
     }
 }
