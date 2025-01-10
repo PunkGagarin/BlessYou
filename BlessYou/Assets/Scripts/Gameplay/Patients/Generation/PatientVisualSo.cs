@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Gameplay.Patients.Generation
 {
     
-    [CreateAssetMenu(menuName = "Gameplay/Settings/PatientVisualRepository", fileName = "PatientVisualRepository")]
+    // [CreateAssetMenu(menuName = "Gameplay/Settings/PatientVisualRepository", fileName = "PatientVisualRepository")]
     public class PatientVisualRepositorySo : ScriptableObject
     {
 
