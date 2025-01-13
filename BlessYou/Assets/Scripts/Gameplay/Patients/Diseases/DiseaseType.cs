@@ -5,6 +5,7 @@
         OpenWound,
         Sepsis,
         Burn,
-        Fever
+        Fever,
+        StomachAche
     }
 }

@@ -29,3 +29,4 @@ MonoBehaviour:
   _diseases:
   - {fileID: 11400000, guid: 11d43981f0a1db147ba4fb1479cac6a7, type: 2}
   - {fileID: 11400000, guid: c7c395ffe2342dc4682406d698540c32, type: 2}
+  - {fileID: 11400000, guid: 967db94c34908fe44a163fe6a2cd82d1, type: 2}

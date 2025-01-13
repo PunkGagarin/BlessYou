@@ -5,6 +5,7 @@
         None = 0,
         Grass,
         Water,
-        Bandage
+        Bandage,
+		HolyWater
     }
 }
