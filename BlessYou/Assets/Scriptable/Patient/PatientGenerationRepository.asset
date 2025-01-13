@@ -26,6 +26,30 @@ MonoBehaviour:
     - Bob
     - John
     - Mark
+    - Mortimer
+    - Hugo
+    - Richard
+    - Edward
+    - Godfrid
+    - Oscar
+    - Fryderyk
+    - Benedict
+    - Alfred
+    - Rosamund
+    - Sigrid
+    - Ulrich
+    - Leonard
+    - Gerald
+    - Berthold
+    - Conrad
+    - Thomas
+    - Olaf
+    - Galfrid
+    - Christophe
+    - Reynald
+    - William
+    - Lionel
+    - Samuel
   _diseases:
   - {fileID: 11400000, guid: 11d43981f0a1db147ba4fb1479cac6a7, type: 2}
   - {fileID: 11400000, guid: c7c395ffe2342dc4682406d698540c32, type: 2}

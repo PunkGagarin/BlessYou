@@ -3,8 +3,13 @@
     public enum MedicamentType
     {
         None = 0,
-        Grass,
-        Water,
+        AloeVeraOil,
+        PlantainOintment,
+		BasilDrink,
+		CalendulaPowder,
+		SageDrink,
+		ToadPowder,
+		LicoriceRootTincture,
         Bandage,
 		HolyWater
     }

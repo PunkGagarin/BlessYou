@@ -3,9 +3,18 @@
     public enum DiseaseType
     {
         OpenWound,
-        Sepsis,
-        Burn,
-        Fever,
-        StomachAche
+		Laceration,
+		StabWound,
+		Sepsis,
+		Gangrene,
+		Burn,
+		Leprosy,
+		Fever,
+		Migraines,
+		Fistula,
+		Scratch,
+		Barley,
+		SweatingSickness,
+		Ringworm
     }
 }

@@ -2,8 +2,12 @@
 {
     public enum InstrumentType
     {
-        Saw,
-        Glass,
-        Knife
+        None = 0,
+		Saw,
+		HookNeedle,
+		Scalpel,
+		Expander,
+		Ticks,
+		Hammer
     }
 }

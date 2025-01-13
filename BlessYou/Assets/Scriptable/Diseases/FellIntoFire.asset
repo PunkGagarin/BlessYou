@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b4f4d6924d4c32bfa6d8742083af08, type: 3}
-  m_Name: StomachAche
+  m_Name: FellIntoFire
   m_EditorClassIdentifier: 
-  <HeavinessType>k__BackingField: 0
-  <Name>k__BackingField: sdfgasdfasdfas
-  <Type>k__BackingField: 4
+  <HeavinessType>k__BackingField: 1
+  <Name>k__BackingField: He fell into the fire
+  <Type>k__BackingField: 5
   <HealInfo>k__BackingField:
-    <InstrumentType>k__BackingField: 1
-    <MedicamentType>k__BackingField: 4
-    <ExtraMedType>k__BackingField: 0
-    <HealTime>k__BackingField: 15
+    <InstrumentType>k__BackingField: 3
+    <MedicamentType>k__BackingField: 1
+    <ExtraMedType>k__BackingField: 6
+    <HealTime>k__BackingField: 30
