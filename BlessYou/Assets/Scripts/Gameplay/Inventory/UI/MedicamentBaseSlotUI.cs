@@ -2,7 +2,7 @@
 
 namespace Gameplay.Inventory
 {
-    public class MedicamentSlot : Slot<MedicamentType>
+    public class MedicamentBaseSlotUI : BaseSlotUI<MedicamentType>
     {
 
     }

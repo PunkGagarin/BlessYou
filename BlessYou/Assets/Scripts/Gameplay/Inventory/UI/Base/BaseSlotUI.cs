@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Gameplay.Inventory
 {
-    public class Slot<T> : MonoBehaviour
+    public class BaseSlotUI<T> : MonoBehaviour
     {
 
         [field: SerializeField]

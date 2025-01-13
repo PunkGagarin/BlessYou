@@ -15,17 +15,4 @@ namespace Gameplay.Patients.Generation
         private List<CustomKeyValue<Bodytype, List<CustomKeyValue<PatientVisualType, List<Sprite>>>>> _parts;
     }
 
-    public enum Bodytype
-    {
-        Type1,
-        Type2,
-        Type3
-    }
-    
-    public enum PatientVisualType
-    {
-        Hair,
-        Skin,
-        Cloth
-    }
 }

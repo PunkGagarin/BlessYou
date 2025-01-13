@@ -16,27 +16,66 @@ namespace Gameplay.Patients.PatientQueue
 
         private readonly List<Patient> _patients = new();
 
+        private Patient _currentPatient;
+
         public event Action EndOfPatientQueue = delegate { };
 
         private void Awake()
         {
-            _view.NextPatientButton.onClick.AddListener(ProceedNextPatient);
+            _view.NextPatientButton.onClick.AddListener(ShowNextPatientUI);
+            _view.OnTimerEnds += OnPatientTimerEnds;
             _initialExaminationManager.OnPatientDistributed += OnPatientDistributed;
         }
 
         private void OnDestroy()
         {
-            _view.NextPatientButton.onClick.AddListener(ProceedNextPatient);
+            _view.NextPatientButton.onClick.AddListener(ShowNextPatientUI);
+            _view.OnTimerEnds -= OnPatientTimerEnds;
             _initialExaminationManager.OnPatientDistributed -= OnPatientDistributed;
         }
+        
+        private void ShowNextPatientUI()
+        {
+            //todo: create patient AnamnesisCard
+            _initialExaminationManager.StartExaminationFor(_currentPatient);
+        }
+        
+        private void OnPatientTimerEnds()
+        {
+            _initialExaminationManager.KickOutPatient();
+        }
+        
+        private void OnPatientDistributed()
+        {
+            if (_patients.Count == 0)
+            {
+                FinishQueue();
+                return;
+            }
 
+            ProceedNextPatient();
+        }
+
+        private void FinishQueue()
+        {
+            Debug.Log($"Закончился первичный осмотр, Началось лечение пациентов");
+            HideNextPatientButton();
+
+            EndOfPatientQueue.Invoke();
+        }
+
+        public void HideNextPatientButton()
+        {
+            _view.Hide();
+        }
 
         public void StartPatientQueue(int currentDay)
         {
             GeneratePatientsForCurrentDay(currentDay);
-            _view.ShowIndicator();
+            _view.Show();
+            ProceedNextPatient();
         }
-
+        
         private void GeneratePatientsForCurrentDay(int currentDay)
         {
             int patientsPerDay = _queueSettings.GetPatientsPerDay(currentDay);
@@ -46,30 +85,14 @@ namespace Gameplay.Patients.PatientQueue
                 _patients.Add(_patientGenerator.GeneratePatient());
         }
 
-        private void OnPatientDistributed()
-        {
-            if (_patients.Count == 0)
-                FinishQueue();
-        }
-
         private void ProceedNextPatient()
         {
             Debug.Log($"Proceed next patient");
-            var patient = _patients[0];
+            _currentPatient = _patients[0];
             _patients.RemoveAt(0);
             _view.MoveLine();
-
-            //todo: create patient AnamnesisCard
-            _initialExaminationManager.StartExaminationFor(patient);
-        }
-
-        private void FinishQueue()
-        {
-            Debug.Log($"Закончился первичный осмотр, Началось лечение пациентов");
-            _view.HideIndicator();
-
-            EndOfPatientQueue.Invoke();
+            var randomTime = _queueSettings.GetRandomQueueTime();
+            _view.SetTimer(randomTime);
         }
     }
-
 }

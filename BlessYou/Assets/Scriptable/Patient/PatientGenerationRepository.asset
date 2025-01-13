@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98e0d983bb64f248a8c23ecd72a3a6e, type: 3}
+  m_Name: PatientGenerationRepository
+  m_EditorClassIdentifier: 
+  _names:
+  - _key: 1
+    _value:
+    - Alice
+    - Molly
+    - Jane
+    - Mary
+  - _key: 0
+    _value:
+    - Harold
+    - Alex
+    - Bob
+    - John
+    - Mark
+  _diseases:
+  - {fileID: 11400000, guid: 11d43981f0a1db147ba4fb1479cac6a7, type: 2}
+  - {fileID: 11400000, guid: c7c395ffe2342dc4682406d698540c32, type: 2}

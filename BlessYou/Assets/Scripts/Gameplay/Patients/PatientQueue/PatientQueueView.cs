@@ -1,28 +1,39 @@
 ﻿using System;
+using Gameplay.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay
+namespace Gameplay.Patients.PatientQueue
 {
-    public class PatientQueueView : MonoBehaviour
+    public class PatientQueueView : ContentUI
     {
 
         [field: SerializeField]
         public Button NextPatientButton { get; private set; }
 
-        public void ShowIndicator()
+        [SerializeField]
+        private PatientTimerUI _patientTimerUI;
+        
+        public event Action OnTimerEnds = delegate { };
+
+        private void Awake()
         {
-            NextPatientButton.gameObject.SetActive(true);
+            _patientTimerUI.OnTimerEnds += OnTimerEnds;
         }
         
-        public void HideIndicator()
+        private void OnDestroy()
         {
-            NextPatientButton.gameObject.SetActive(false);
+            _patientTimerUI.OnTimerEnds -= OnTimerEnds;
         }
 
         public void MoveLine()
         {
             //todo: implement visual effects
+        }
+
+        public void SetTimer(float maxTimer)
+        {
+            _patientTimerUI.SetTimer(maxTimer);
         }
     }
 }

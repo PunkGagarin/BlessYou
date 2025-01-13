@@ -12,7 +12,7 @@ namespace Gameplay.Base
         {
             _content.SetActive(true);
         }
-        
+
         public void Hide()
         {
             _content.SetActive(false);

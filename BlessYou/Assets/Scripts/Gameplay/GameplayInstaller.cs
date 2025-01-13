@@ -10,6 +10,9 @@ namespace Gameplay
 
         [SerializeField]
         private DayCycleManager dayCycleManager;
+        
+        [SerializeField]
+        private StartDayButtonUI _startDayButtonUI;
 
         [SerializeField]
         private EndDayButtonView _endDayButtonView;
@@ -23,10 +26,10 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Container.Bind<DayCycleManager>().FromInstance(dayCycleManager).AsSingle();
+            Container.Bind<StartDayButtonUI>().FromInstance(_startDayButtonUI).AsSingle();
             Container.Bind<EndDayButtonView>().FromInstance(_endDayButtonView).AsSingle();
             Container.Bind<LoseView>().FromInstance(_loseView).AsSingle();
             Container.Bind<GameManger>().FromInstance(_gameManger).AsSingle();
         }
-
     }
 }

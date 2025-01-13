@@ -18,6 +18,12 @@ namespace Gameplay
             new CustomKeyValue<int, int>(7, 10)
         };
 
+        [SerializeField]
+        private float _queueMinTimer = 20f;
+        
+        [SerializeField]
+        private float _queueMaxTimer = 40f;
+
         public int GetPatientsPerDay(int currentDay)
         {
             foreach ((int dayIndex, int patients) in _patientsPerDay)
@@ -28,5 +34,7 @@ namespace Gameplay
 
             return _defaultPatients;
         }
+        
+        public float GetRandomQueueTime() => Random.Range(_queueMinTimer, _queueMaxTimer);
     }
 }

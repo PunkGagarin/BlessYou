@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gameplay.Inventory.Settings
 {
-    [CreateAssetMenu(menuName = "Gameplay/Settings/MedicamentarySettings", fileName = "MedicamentarySettings")]
+    // [CreateAssetMenu(menuName = "Gameplay/Settings/MedicamentarySettings", fileName = "MedicamentarySettings")]
     public class MedicamentarySettings : ScriptableObject
     {
         [SerializeField]
@@ -21,7 +21,7 @@ namespace Gameplay.Inventory.Settings
             {
                 Debug.LogError($"There is no unlock price for {medType}");
             }
-            return customKeyValue.Value;
+            return customKeyValue?.Value ?? default;
         }
     }
 }

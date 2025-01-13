@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Gameplay.Inventory.UI
 {
-    public abstract class BaseInventoryUI<T, S> : ContentUI where S : Slot<T>
+    public abstract class BaseInventoryUI<T, S> : ContentUI where S : BaseSlotUI<T>
     {
         [SerializeField]
         private List<S> _initialSlot;

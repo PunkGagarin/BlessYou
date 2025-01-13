@@ -15,7 +15,8 @@ namespace Gameplay
         [Inject] private NewspaperManager _newspaperManager;
         [Inject] private PatientQueueManager _queueManager;
         [Inject] private PatientTreatmentManager _treatmentManager;
-        [Inject] private EndDayButtonView _endDayButtonView;
+        [Inject] private StartDayButtonUI _startDayButtonUI;
+        [Inject] private EndDayButtonView _endDayButtonUI;
         [Inject] private FamilyManager _familyManager;
 
         private int _currentDay;
@@ -24,7 +25,8 @@ namespace Gameplay
         {
             _queueManager.EndOfPatientQueue += StartTreatment;
             _treatmentManager.EndOfTreatment += ShowEndDayButton;
-            _endDayButtonView.EndDayButton.onClick.AddListener(EndCurrentDay);
+            _startDayButtonUI.EndDayButton.onClick.AddListener(StartPatientQueue);
+            _endDayButtonUI.EndDayButton.onClick.AddListener(EndCurrentDay);
 
             StartNewDay();
         }
@@ -33,7 +35,8 @@ namespace Gameplay
         {
             _queueManager.EndOfPatientQueue -= StartTreatment;
             _treatmentManager.EndOfTreatment -= ShowEndDayButton;
-            _endDayButtonView.EndDayButton.onClick.RemoveListener(EndCurrentDay);
+            _startDayButtonUI.EndDayButton.onClick.RemoveListener(StartPatientQueue);
+            _endDayButtonUI.EndDayButton.onClick.RemoveListener(EndCurrentDay);
         }
 
         private void StartNewDay()
@@ -42,14 +45,15 @@ namespace Gameplay
             Debug.Log($"Начался новый день: {_currentDay}");
 
             CalculatePreviousDay();
-            ClearPreviousDay();
+            PrepareNewDayUI();
             ShowNews();
-            StartPatientQueue();
         }
 
-        private void ClearPreviousDay()
+        private void PrepareNewDayUI()
         {
-            _endDayButtonView.Hide();
+            _endDayButtonUI.Hide();
+            _queueManager.HideNextPatientButton();
+            _startDayButtonUI.Show();
         }
 
         private void CalculatePreviousDay()
@@ -65,6 +69,7 @@ namespace Gameplay
 
         private void StartPatientQueue()
         {
+            _startDayButtonUI.Hide();
             _queueManager.StartPatientQueue(_currentDay);
         }
 
@@ -75,7 +80,7 @@ namespace Gameplay
 
         private void ShowEndDayButton()
         {
-            _endDayButtonView.Show();
+            _endDayButtonUI.Show();
         }
 
         private void EndCurrentDay()

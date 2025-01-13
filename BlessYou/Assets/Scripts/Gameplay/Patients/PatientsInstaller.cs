@@ -1,4 +1,5 @@
-﻿using Gameplay.Patients.InitialExam;
+﻿using Gameplay.Patients.Generation;
+using Gameplay.Patients.InitialExam;
 using Gameplay.Patients.PatientQueue;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -21,8 +22,11 @@ namespace Gameplay.Patients
         [SerializeField]
         private InitialExaminationManager _initialExaminationManager;
 
+        [FormerlySerializedAs("_initialExaminationView")] [SerializeField]
+        private InitialExaminationUI initialExaminationUI;
+
         [SerializeField]
-        private InitialExaminationView _initialExaminationView;
+        private PatientGenerationRepository _patientGenerationRepository;
 
 
         public override void InstallBindings()
@@ -33,9 +37,10 @@ namespace Gameplay.Patients
             
             Container.BindInterfacesAndSelfTo<InitialExaminationManager>().FromInstance(_initialExaminationManager)
                 .AsSingle();
-            Container.BindInterfacesAndSelfTo<InitialExaminationView>().FromInstance(_initialExaminationView)
+            Container.BindInterfacesAndSelfTo<InitialExaminationUI>().FromInstance(initialExaminationUI)
                 .AsSingle();
             
+            Container.BindInterfacesAndSelfTo<PatientGenerationRepository>().FromInstance(_patientGenerationRepository).AsSingle();
             Container.BindInterfacesAndSelfTo<PatientGenerator>().AsSingle();
         }
     }

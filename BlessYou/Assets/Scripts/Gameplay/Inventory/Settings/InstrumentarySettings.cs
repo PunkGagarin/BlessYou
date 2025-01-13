@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gameplay.Inventory.Settings
 {
-    [CreateAssetMenu(menuName = "Gameplay/Settings/InstrumentarySettings", fileName = "InstrumentarySettings")]
+    // [CreateAssetMenu(menuName = "Gameplay/Settings/InstrumentarySettings", fileName = "InstrumentarySettings")]
     public class InstrumentarySettings : ScriptableObject
     {
         [SerializeField]
@@ -17,7 +17,7 @@ namespace Gameplay.Inventory.Settings
             {
                 Debug.LogError($"There is no unlock price for {instrumentType}");
             }
-            return customKeyValue.Value;
+            return customKeyValue?.Value ?? default;
         }
     }
 }
