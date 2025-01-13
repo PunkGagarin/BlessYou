@@ -1,6 +1,7 @@
 using System;
 using Gameplay;
 using Gameplay.Base;
+using Gameplay.Patients;
 using UnityEngine;
 
 public class BedSpotView : ClickableView
@@ -14,6 +15,9 @@ public class BedSpotView : ClickableView
 
     [SerializeField]
     private SpriteRenderer _patientSprite;
+
+    [SerializeField]
+    private PatientTimerUI _timerUI;
 
     public void TurnOnInteract()
     {
@@ -44,10 +48,19 @@ public class BedSpotView : ClickableView
     public void SetPatient(Patient patient)
     {
         _patientSprite.gameObject.SetActive(true);
+        _timerUI.Show();
+        SetTimer(patient.Disease.HealInfo.HealTime);
+        TurnOnInteract();
+    }
+
+    private void SetTimer(float time)
+    {
+        _timerUI.SetTimer(time);
     }
 
     public void CleanFromPatient()
     {
         _patientSprite.gameObject.SetActive(false);
+        _timerUI.Hide();
     }
 }

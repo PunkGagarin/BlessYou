@@ -91,12 +91,12 @@ namespace Gameplay.Treatment.Beds
 
         public void MakeBedsWithPatientInteractable()
         {
-            Debug.Log("making beds interactable");
-            foreach (var (view, bedInfo) in _beds)
-            {
-                if (bedInfo.HasPatient)
-                    view.TurnOnInteract();
-            }
+            // Debug.Log("making beds interactable");
+            // foreach (var (view, bedInfo) in _beds)
+            // {
+            //     if (bedInfo.HasPatient)
+            //         view.TurnOnInteract();
+            // }
         }
 
         public void CleanBeds()

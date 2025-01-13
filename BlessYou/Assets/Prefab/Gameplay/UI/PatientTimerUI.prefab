@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _content: {fileID: 3540685576326443955}
-  _defaultColor: {r: 0.07705519, g: 0.9245283, b: 0, a: 0}
-  _lowTimerColor: {r: 0.745283, g: 0, b: 0, a: 0}
+  _defaultColor: {r: 0.07705519, g: 0.9245283, b: 0, a: 1}
+  _lowTimerColor: {r: 0.745283, g: 0, b: 0, a: 1}
   _foregroundImage: {fileID: 2516676312125571792}
 --- !u!1 &3540685576326443955
 GameObject:

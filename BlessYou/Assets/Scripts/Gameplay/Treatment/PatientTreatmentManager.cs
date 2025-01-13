@@ -52,7 +52,7 @@ namespace Gameplay.Treatment
         public void StartPatientTreatment()
         {
             EndTreatmentIfNoPatientsLeft();
-            _bedManager.MakeBedsWithPatientInteractable();
+            // _bedManager.MakeBedsWithPatientInteractable();
         }
     }
 }
