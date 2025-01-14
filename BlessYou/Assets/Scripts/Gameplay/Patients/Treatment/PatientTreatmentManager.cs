@@ -18,13 +18,18 @@ namespace Gameplay.Treatment
         private void Start()
         {
             _bedManager.OnBedWithPatientInteracted += ShowPatientTreatmentView;
-            _view.HealButton.onClick.AddListener(HealPatient);
+            _view.CloseButton.onClick.AddListener(HideUI);
         }
 
         private void OnDestroy()
         {
             _bedManager.OnBedWithPatientInteracted -= ShowPatientTreatmentView;
-            _view.HealButton.onClick.RemoveListener(HealPatient);
+            _view.CloseButton.onClick.RemoveListener(HideUI);
+        }
+
+        private void HideUI()
+        {
+            _view.Hide();
         }
 
         private void HealPatient()
@@ -52,7 +57,6 @@ namespace Gameplay.Treatment
         public void StartPatientTreatment()
         {
             EndTreatmentIfNoPatientsLeft();
-            // _bedManager.MakeBedsWithPatientInteractable();
         }
     }
 }

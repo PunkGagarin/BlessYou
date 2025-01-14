@@ -39,5 +39,10 @@ namespace Gameplay.Patients.Generation
         {
             return _diseases.FirstOrDefault(el => el.Type == diseaseType);
         }
+
+        public List<DiseaseSO> GetAllDiseases()
+        {
+            return _diseases;
+        }
     }
 }
