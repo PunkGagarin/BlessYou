@@ -2,7 +2,7 @@
 
 namespace Gameplay.Inventory
 {
-    public class MedicamentaryUI : BaseInventoryUI<InstrumentType, InstrumentSlotUI>
+    public class MedicamentaryUI : BaseInventoryUI<MedicamentType, MedicamentBaseSlotUI>
     {
 
 

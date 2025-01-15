@@ -6,13 +6,19 @@ using UnityEngine.UI;
 
 namespace Gameplay.Inventory.UI
 {
-    public abstract class BaseInventoryUI<T, S> : ContentUI where S : BaseSlotUI<T>
+    public abstract class BaseInventoryUI<T, S> : MonoBehaviour where S : BaseSlotUI<T>
     {
         [SerializeField]
         private List<S> _initialSlot;
+        //
+        // [field: SerializeField]
+        // public Button CloseButton { get; private set; }
 
-        [field: SerializeField]
-        public Button CloseButton { get; private set; }
+        public List<S> InitialSlots
+        {
+            get => _initialSlot;
+            set => _initialSlot = value;
+        }
 
         private Dictionary<T, S> _items = new();
 
@@ -25,7 +31,7 @@ namespace Gameplay.Inventory.UI
 
         private void Init()
         {
-            foreach (var slot in _initialSlot)
+            foreach (var slot in InitialSlots)
             {
                 var type = slot.Type;
                 _items.Add(type, slot);

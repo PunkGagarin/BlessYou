@@ -1,19 +1,17 @@
 ﻿using System;
+using Gameplay.Inventory.UI.Base;
 using Zenject;
 
 namespace Gameplay.Inventory
 {
-    public class MedicamentaryManager : IInitializable, IDisposable
+    public class MedicamentaryManager : ItemManager<MedicamentType, MedicamentaryUI, MedicamentBaseSlotUI>
     {
+        
+        
 
-        public void Initialize()
+        protected override void OnItemDrop(MedicamentType type)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -1,20 +1,11 @@
 ﻿using System;
+using Gameplay.Inventory.UI.Base;
 using UnityEngine;
 using Zenject;
 
 namespace Gameplay.Inventory
 {
-    public class InstrumentaryManager : IInitializable, IDisposable
+    public class InstrumentaryManager : ItemManager<InstrumentType, InstrumentaryUI, InstrumentSlotUI>
     {
-        
-
-        public void Initialize()
-        {
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
