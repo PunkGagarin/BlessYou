@@ -31,11 +31,11 @@ namespace Gameplay.Inventory.UI
 
         private void Init()
         {
-            foreach (var slot in InitialSlots)
-            {
-                var type = slot.Type;
-                _items.Add(type, slot);
-            }
+            // foreach (var slot in InitialSlots)
+            // {
+            //     var type = slot.Type;
+            //     _items.Add(type, slot);
+            // }
         }
     }
 }
