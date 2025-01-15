@@ -8,14 +8,11 @@ namespace Gameplay.Inventory
     {
 
         [SerializeField]
-        private Image _unlockedImage;
-
-        [SerializeField]
         private Image _lockedImage;
 
         public void Unlock()
         {
-            _unlockedImage.gameObject.SetActive(true);
+            _icon.gameObject.SetActive(true);
             _lockedImage.gameObject.SetActive(false);
             var dragHandler = GetComponent<SlotDragHandler<InstrumentType>>();
             dragHandler.CanDrag = true;
@@ -24,7 +21,7 @@ namespace Gameplay.Inventory
         public void Lock()
         {
             _lockedImage.gameObject.SetActive(true);
-            _unlockedImage.gameObject.SetActive(false);
+            _icon.gameObject.SetActive(false);
             var dragHandler = GetComponent<SlotDragHandler<InstrumentType>>();
             dragHandler.CanDrag = false;
         }

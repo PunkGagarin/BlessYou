@@ -7,7 +7,8 @@ using Zenject;
 
 namespace Gameplay.Inventory
 {
-    public class InstrumentaryManager : ItemManager<InstrumentType, InstrumentaryUI, InstrumentSlotUI, InstrumentRepository>
+    public class InstrumentaryManager : 
+        ItemManager<InstrumentType, InstrumentaryUI, InstrumentSlotUI, InstrumentRepository>
     {
 
         protected override void Init(InstrumentSlotUI slot)
@@ -17,6 +18,8 @@ namespace Gameplay.Inventory
                 slot.Unlock();
             else
                 slot.Lock();
+
+            slot.SetSprite(so.Icon);
         }
 
         protected override void OnItemDrop(InstrumentType type)
