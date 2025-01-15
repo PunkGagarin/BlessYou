@@ -13,5 +13,8 @@ namespace Gameplay.Inventory.Settings
 
         [field: SerializeField]
         public MedicamentType Type { get; private set; }
+        
+        [field: SerializeField]
+        public Sprite Icon { get; private set; }
     }
 }
