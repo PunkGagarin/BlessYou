@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Gameplay.Inventory
 {
-    public class MedicamentaryManager : 
+    public class MedicamentaryManager :
         ItemManager<MedicamentType, MedicamentaryUI, MedicamentBaseSlotUI, MedicamentRepository>
     {
         protected Dictionary<MedicamentType, MedicamentInfo> _items = new();
@@ -29,16 +29,12 @@ namespace Gameplay.Inventory
             if (medicamentInfo.CurrentCount > 0)
             {
                 medicamentInfo.CurrentCount--;
-                Debug.Log("Потратили 1 медикамент");
+                Debug.Log("Потратили 1 медикамент, тип: " + type);
                 medicamentInfo.View.SetCount(medicamentInfo.CurrentCount);
             }
+            else
+                Debug.Log("Не хватает медикаментов, тип: " + type);
         }
     }
 
-    public class MedicamentInfo
-    {
-        public MedicamentSo SO { get; set; }
-        public int CurrentCount { get; set; }
-        public MedicamentBaseSlotUI View { get; set; }
-    }
 }
