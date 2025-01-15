@@ -683,8 +683,8 @@ Transform:
   - {fileID: 268171397}
   - {fileID: 1384750420}
   - {fileID: 1209726632}
-  - {fileID: 1356822907}
   - {fileID: 435660819}
+  - {fileID: 1356822907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226768037
@@ -1424,7 +1424,7 @@ GameObject:
   - component: {fileID: 435660819}
   - component: {fileID: 435660820}
   m_Layer: 0
-  m_Name: Instrumentary
+  m_Name: InstrumentaryManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3499,6 +3499,8 @@ MonoBehaviour:
   _glossaryUI: {fileID: 1265119192}
   _medicamentaryUI: {fileID: 5994502100878656269}
   _instrumentaryUI: {fileID: 5994502100878656276}
+  _instrumentaryManager: {fileID: 435660820}
+  _medicamentaryManager: {fileID: 1356822908}
 --- !u!1 &973987267
 GameObject:
   m_ObjectHideFlags: 0
@@ -8956,7 +8958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8866196659945110980, guid: a5cf3fef515c8bc4fa9e104d92ee1e44, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000046656165
+      value: 0.000017148895
       objectReference: {fileID: 0}
     - target: {fileID: 8910854609401693956, guid: a5cf3fef515c8bc4fa9e104d92ee1e44, type: 3}
       propertyPath: m_AnchorMax.y

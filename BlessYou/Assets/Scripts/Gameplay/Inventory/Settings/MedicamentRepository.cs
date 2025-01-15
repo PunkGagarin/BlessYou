@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace Gameplay.Inventory.Settings
 {
-    // [CreateAssetMenu(menuName = "Gameplay/Settings/MedicamentarySettings", fileName = "MedicamentarySettings")]
+    // [CreateAssetMenu(menuName = "Gameplay/Settings/MedicamentRepository", fileName = "MedicamentRepository")]
     public class MedicamentRepository : ScriptableObject
     {
         [SerializeField]

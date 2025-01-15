@@ -1,4 +1,5 @@
 ﻿using Gameplay.Inventory;
+using Gameplay.Inventory.Settings;
 using UnityEngine;
 using Zenject;
 
@@ -31,6 +32,12 @@ namespace Gameplay.Treatment
         [SerializeField]
         private MedicamentaryManager _medicamentaryManager;
 
+        [SerializeField]
+        private InstrumentRepository _instrumentRepository;
+        
+        [SerializeField]
+        private MedicamentRepository _medicamentRepository;
+
         public override void InstallBindings()
         {
             Container.Bind<PatientTreatmentManager>().FromInstance(_patientTreatmentManager).AsSingle();
@@ -41,6 +48,8 @@ namespace Gameplay.Treatment
             Container.Bind<MedicamentaryUI>().FromInstance(_medicamentaryUI).AsSingle();
             Container.Bind<InstrumentaryManager>().FromInstance(_instrumentaryManager).AsSingle();
             Container.Bind<MedicamentaryManager>().FromInstance(_medicamentaryManager).AsSingle();
+            Container.Bind<InstrumentRepository>().FromInstance(_instrumentRepository).AsSingle();
+            Container.Bind<MedicamentRepository>().FromInstance(_medicamentRepository).AsSingle();
         }
 
     }

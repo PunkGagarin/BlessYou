@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gameplay.Inventory.Settings
 {
-    // [CreateAssetMenu(menuName = "Gameplay/Settings/InstrumentarySettings", fileName = "InstrumentarySettings")]
+    // [CreateAssetMenu(menuName = "Gameplay/Settings/InstrumentRepository", fileName = "InstrumentRepository")]
     public class InstrumentRepository : ScriptableObject
     {
         [SerializeField]
