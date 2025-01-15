@@ -5,25 +5,21 @@ using UnityEngine;
 namespace Gameplay.Inventory.Settings
 {
     // [CreateAssetMenu(menuName = "Gameplay/Settings/InstrumentarySettings", fileName = "InstrumentarySettings")]
-    public class InstrumentarySettings : ScriptableObject
+    public class InstrumentRepository : ScriptableObject
     {
         [SerializeField]
-        private List<CustomKeyValue<InstrumentType, int>> _unlockPrice;
-        
-        [SerializeField]
-        private List<InstrumentType> _unlockedByDefault;
-        
-        [SerializeField]
-        private List<CustomKeyValue<InstrumentType, int>> _unlockedAtDay;
+        private List<InstrumentSo> _instruments;
         
         public int GetUnlockPriceFor(InstrumentType instrumentType)
         {
-            var customKeyValue = _unlockPrice.FirstOrDefault(x => x.Key == instrumentType);
+            var customKeyValue = _instruments.FirstOrDefault(x => x.Type == instrumentType);
             if (customKeyValue == null)
             {
                 Debug.LogError($"There is no unlock price for {instrumentType}");
             }
-            return customKeyValue?.Value ?? default;
+            return customKeyValue?.PriceToUnlock ?? default;
         }
+        
+        
     }
 }
