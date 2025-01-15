@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb19a72ef44b495db6dd5bfe1c81423f, type: 3}
   m_Name: New Medicament 8
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 9
-  <PriceToBuy>k__BackingField: 0
-  <StartCount>k__BackingField: 2
-  <Icon>k__BackingField: {fileID: 0}
+  <Type>k__BackingField: 7
+  <PriceToBuy>k__BackingField: 17
+  <StartCount>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 21300000, guid: 9f31636850c02a84293fcc3ab0134245, type: 3}

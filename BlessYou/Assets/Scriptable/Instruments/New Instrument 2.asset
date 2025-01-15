@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c2b795e5784ec6a808fb64887c5264, type: 3}
   m_Name: New Instrument 2
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 2
-  <PriceToUnlock>k__BackingField: 0
-  <DayToUnlock>k__BackingField: 0
-  <IsUnlockedByDefault>k__BackingField: 1
-  <Icon>k__BackingField: {fileID: 0}
+  <Type>k__BackingField: 1
+  <PriceToUnlock>k__BackingField: 25
+  <DayToUnlock>k__BackingField: 3
+  <IsUnlockedByDefault>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 21300000, guid: 5b69f83a14e6bb74cadd3c3feaba9a69, type: 3}

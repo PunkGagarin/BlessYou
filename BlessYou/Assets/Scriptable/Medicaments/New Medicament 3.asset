@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: New Medicament 3
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 3
-  <PriceToBuy>k__BackingField: 0
+  <PriceToBuy>k__BackingField: 9
   <StartCount>k__BackingField: 2
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 03ec6dbd2317fa24cb76bd76e1ab9c62, type: 3}
