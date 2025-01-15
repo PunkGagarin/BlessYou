@@ -22,6 +22,7 @@ namespace Gameplay.Inventory
         protected override void OnItemDrop(InstrumentType type)
         {
             Debug.Log("On instrument dropped on proper area, type: " + type);
+            OnItemDropped.Invoke(type);
         }
     }
 }

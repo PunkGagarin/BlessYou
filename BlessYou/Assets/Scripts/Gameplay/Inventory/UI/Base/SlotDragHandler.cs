@@ -12,6 +12,7 @@ namespace Gameplay.Inventory.UI.Base
         private Vector2 originalPosition;
 
         public T Type { get; set; }
+        public bool CanDrag { get; set; }
 
         public Action<T> OnItemDropped = delegate { };
 
@@ -24,6 +25,7 @@ namespace Gameplay.Inventory.UI.Base
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (!CanDrag) return;
             // Сохраняем изначальную позицию, чтобы вернуть объект, если нужно
             originalPosition = rectTransform.anchoredPosition;
 
@@ -33,12 +35,14 @@ namespace Gameplay.Inventory.UI.Base
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (!CanDrag) return;
             // Перемещаем объект на основе курсора мыши
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (!CanDrag) return;
             // Проверяем попадание
             if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("DropArea"))
             {

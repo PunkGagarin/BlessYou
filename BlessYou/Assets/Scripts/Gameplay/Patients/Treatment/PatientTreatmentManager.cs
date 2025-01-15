@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Gameplay.Inventory;
 using Gameplay.Treatment.Beds;
 using UnityEngine;
 using Zenject;
@@ -10,6 +11,8 @@ namespace Gameplay.Treatment
     {
         [Inject] private BedManager _bedManager;
         [Inject] private PatientTreatmentView _view;
+        [Inject] private InstrumentaryManager _instrumentaryManager;
+        [Inject] private MedicamentaryManager _medicamentaryManager;
 
         private (Patient patient, BedSpotView bed) _bedWithCurrentPatient;
 
@@ -18,13 +21,27 @@ namespace Gameplay.Treatment
         private void Start()
         {
             _bedManager.OnBedWithPatientInteracted += ShowPatientTreatmentView;
+            _instrumentaryManager.OnItemDropped += TryUseInstrument;
+            _medicamentaryManager.OnItemDropped += TryUseMedicament;
             _view.CloseButton.onClick.AddListener(HideUI);
         }
 
         private void OnDestroy()
         {
             _bedManager.OnBedWithPatientInteracted -= ShowPatientTreatmentView;
+            _instrumentaryManager.OnItemDropped += TryUseInstrument;
+            _medicamentaryManager.OnItemDropped += TryUseMedicament;
             _view.CloseButton.onClick.RemoveListener(HideUI);
+        }
+
+        private void TryUseInstrument(InstrumentType type)
+        {
+            
+        }
+
+        private void TryUseMedicament(MedicamentType type)
+        {
+            
         }
 
         private void HideUI()

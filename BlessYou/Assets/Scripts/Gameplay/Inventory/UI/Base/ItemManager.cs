@@ -12,6 +12,8 @@ namespace Gameplay.Inventory.UI.Base
         [Inject] protected TUI _instrumentaryUI;
         [Inject] protected TR _soRepository;
         
+        public Action<T> OnItemDropped = delegate { };
+        
         public virtual void Start()
         {
             var slots = _instrumentaryUI.InitialSlots;
@@ -37,9 +39,6 @@ namespace Gameplay.Inventory.UI.Base
             }
         }
 
-        protected virtual void OnItemDrop(T type)
-        {
-            
-        }
+        protected abstract void OnItemDrop(T type);
     }
 }

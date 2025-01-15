@@ -31,6 +31,7 @@ namespace Gameplay.Inventory
                 medicamentInfo.CurrentCount--;
                 Debug.Log("Потратили 1 медикамент, тип: " + type);
                 medicamentInfo.View.SetCount(medicamentInfo.CurrentCount);
+                OnItemDropped.Invoke(type);
             }
             else
                 Debug.Log("Не хватает медикаментов, тип: " + type);
