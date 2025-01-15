@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4564896513904303318}
   - component: {fileID: 2307127278680892814}
   - component: {fileID: 5126021359839568743}
+  - component: {fileID: 7966110052419930769}
   m_Layer: 5
   m_Name: MedicamentSlot
   m_TagString: Untagged
@@ -93,6 +94,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Button>k__BackingField: {fileID: 0}
   <Type>k__BackingField: 0
+--- !u!114 &7966110052419930769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367301904906083536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a515ed9808f4c0396f4add060a5de74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1826612557496264299
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿namespace Gameplay.Inventory
 {
-    public enum MedicamentType
+    public enum MedicamentType 
     {
         None = 0,
         AloeVeraOil,

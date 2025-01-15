@@ -221,8 +221,8 @@ GameObject:
   - component: {fileID: 476025850250858277}
   - component: {fileID: 7584729719131524847}
   - component: {fileID: 6720204303528349085}
-  - component: {fileID: 3900402462887313782}
   - component: {fileID: 1914066547605594997}
+  - component: {fileID: 1819029828195551786}
   m_Layer: 5
   m_Name: InstrumentSlot
   m_TagString: Untagged
@@ -303,18 +303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Button>k__BackingField: {fileID: 0}
   <Type>k__BackingField: 0
---- !u!114 &3900402462887313782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204553499272489760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52baa30d769b4c46b331ad27559e79fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &1914066547605594997
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -327,3 +315,15 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1819029828195551786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4204553499272489760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867a98d23c5744cf83c1419c63d0a14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

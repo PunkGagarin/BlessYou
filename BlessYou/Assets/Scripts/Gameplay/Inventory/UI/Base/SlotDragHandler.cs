@@ -4,12 +4,21 @@ using UnityEngine.EventSystems;
 
 namespace Gameplay.Inventory
 {
-    public class SlotDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class SlotDragHandler<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         private Canvas canvas; // Canvas, чтобы учитывать его масштаб
         private RectTransform rectTransform;
         private CanvasGroup canvasGroup;
         private Vector2 originalPosition;
+
+        private T _type;
+
+        public void SetItemType(T type)
+        {
+            _type = type;
+        }
+
+        public Action<T> OnItemDropped = delegate { };
 
         private void Awake()
         {
@@ -45,7 +54,7 @@ namespace Gameplay.Inventory
                 Debug.Log("Мимо!");
                 // Возвращаем объект в исходное положение
             }
-            
+
             rectTransform.anchoredPosition = originalPosition;
 
             // Восстанавливаем взаимодействие объекта
