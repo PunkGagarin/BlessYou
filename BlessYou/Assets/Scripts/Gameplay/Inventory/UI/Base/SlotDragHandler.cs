@@ -11,7 +11,7 @@ namespace Gameplay.Inventory.UI.Base
         private CanvasGroup canvasGroup;
         private Vector2 originalPosition;
 
-        private T _type;
+        public T Type { get; set; }
 
         public Action<T> OnItemDropped = delegate { };
 
@@ -42,7 +42,7 @@ namespace Gameplay.Inventory.UI.Base
             // Проверяем попадание
             if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("DropArea"))
             {
-                OnItemDropped.Invoke(_type);
+                OnItemDropped.Invoke(Type);
             }
             else
             {

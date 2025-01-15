@@ -19,7 +19,10 @@ namespace Gameplay.Inventory.UI.Base
             foreach (var slot in slots)
             {
                 Init(slot);
-                slot.GetComponent<SlotDragHandler<T>>().OnItemDropped += OnItemDrop;
+
+                var slotDragHandler = slot.GetComponent<SlotDragHandler<T>>();
+                slotDragHandler.Type = slot.Type;
+                slotDragHandler.OnItemDropped += OnItemDrop;
             }
         }
 
