@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gameplay.Inventory.UI.Base;
+using UnityEngine;
 
 namespace Gameplay.Inventory
 {

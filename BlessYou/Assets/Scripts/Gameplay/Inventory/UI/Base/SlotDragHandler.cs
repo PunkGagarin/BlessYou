@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Gameplay.Inventory
+namespace Gameplay.Inventory.UI.Base
 {
     public class SlotDragHandler<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
@@ -12,11 +12,6 @@ namespace Gameplay.Inventory
         private Vector2 originalPosition;
 
         private T _type;
-
-        public void SetItemType(T type)
-        {
-            _type = type;
-        }
 
         public Action<T> OnItemDropped = delegate { };
 
@@ -47,7 +42,7 @@ namespace Gameplay.Inventory
             // Проверяем попадание
             if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("DropArea"))
             {
-                Debug.Log("Попал в целевую область!");
+                OnItemDropped.Invoke(_type);
             }
             else
             {

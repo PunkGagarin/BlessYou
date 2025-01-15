@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Gameplay.Base;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Gameplay.Inventory.UI
+namespace Gameplay.Inventory.UI.Base
 {
     public abstract class BaseInventoryUI<T, S> : MonoBehaviour where S : BaseSlotUI<T>
     {
@@ -19,8 +17,6 @@ namespace Gameplay.Inventory.UI
             get => _initialSlot;
             set => _initialSlot = value;
         }
-
-        private Dictionary<T, S> _items = new();
 
         public event Action<T> OnInstrumentClicked = delegate { };
 

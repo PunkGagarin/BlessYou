@@ -10,6 +10,12 @@ namespace Gameplay.Inventory.Settings
         [SerializeField]
         private List<CustomKeyValue<InstrumentType, int>> _unlockPrice;
         
+        [SerializeField]
+        private List<InstrumentType> _unlockedByDefault;
+        
+        [SerializeField]
+        private List<CustomKeyValue<InstrumentType, int>> _unlockedAtDay;
+        
         public int GetUnlockPriceFor(InstrumentType instrumentType)
         {
             var customKeyValue = _unlockPrice.FirstOrDefault(x => x.Key == instrumentType);

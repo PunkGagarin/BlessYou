@@ -1,4 +1,5 @@
 ﻿using Gameplay.Inventory.UI;
+using Gameplay.Inventory.UI.Base;
 
 namespace Gameplay.Inventory
 {

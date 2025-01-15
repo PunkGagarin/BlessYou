@@ -1,25 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 namespace Gameplay.Inventory.UI.Base
 {
-    public abstract class ItemManager<T, TUI, TS> : IInitializable, IDisposable
+    public abstract class ItemManager<T, TUI, TS> : MonoBehaviour
         where TUI : BaseInventoryUI<T, TS> where TS : BaseSlotUI<T>
     {
         [Inject] private TUI _instrumentaryUI;
+        
+        protected Dictionary<T, TS> _items = new();
 
-        public void Initialize()
+        public void Start()
         {
             var slots = _instrumentaryUI.InitialSlots;
 
             foreach (var slot in slots)
             {
+                _items.Add(slot.Type, slot);
                 slot.GetComponent<SlotDragHandler<T>>().OnItemDropped += OnItemDrop;
             }
         }
 
-        public void Dispose()
+        public void OnDestroy()
         {
             var slots = _instrumentaryUI.InitialSlots;
             foreach (var slot in slots)
@@ -30,7 +34,7 @@ namespace Gameplay.Inventory.UI.Base
 
         protected virtual void OnItemDrop(T type)
         {
-            Debug.Log("On item dropped on proper area");
+            
         }
     }
 }

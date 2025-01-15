@@ -25,6 +25,12 @@ namespace Gameplay.Treatment
         [SerializeField]
         private InstrumentaryUI _instrumentaryUI;
 
+        [SerializeField]
+        private InstrumentaryManager _instrumentaryManager;
+        
+        [SerializeField]
+        private MedicamentaryManager _medicamentaryManager;
+
         public override void InstallBindings()
         {
             Container.Bind<PatientTreatmentManager>().FromInstance(_patientTreatmentManager).AsSingle();
@@ -33,8 +39,8 @@ namespace Gameplay.Treatment
             Container.Bind<GlossaryUI>().FromInstance(_glossaryUI).AsSingle();
             Container.Bind<InstrumentaryUI>().FromInstance(_instrumentaryUI).AsSingle();
             Container.Bind<MedicamentaryUI>().FromInstance(_medicamentaryUI).AsSingle();
-            Container.Bind<MedicamentaryManager>().AsSingle();
-            Container.Bind<InstrumentaryManager>().AsSingle();
+            Container.Bind<InstrumentaryManager>().FromInstance(_instrumentaryManager).AsSingle();
+            Container.Bind<MedicamentaryManager>().FromInstance(_medicamentaryManager).AsSingle();
         }
 
     }

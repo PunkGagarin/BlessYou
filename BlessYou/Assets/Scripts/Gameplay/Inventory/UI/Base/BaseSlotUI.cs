@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.Inventory
+namespace Gameplay.Inventory.UI.Base
 {
     public class BaseSlotUI<T> : MonoBehaviour
     {
