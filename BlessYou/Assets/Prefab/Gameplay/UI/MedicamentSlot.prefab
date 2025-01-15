@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nameText: {fileID: 3420691492303554457}
-  <Button>k__BackingField: {fileID: 0}
+  _icon: {fileID: 8249369488535168627}
   <Type>k__BackingField: 0
   _countText: {fileID: 6745965571856163085}
 --- !u!114 &7966110052419930769
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 2405144645951051382}
   - component: {fileID: 8249369488535168627}
   m_Layer: 5
-  m_Name: InstrumentIcon
+  m_Name: MedicamentIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
