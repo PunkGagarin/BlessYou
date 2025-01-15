@@ -19,7 +19,11 @@ namespace Gameplay.Inventory.Settings
             }
             return customKeyValue?.PriceToUnlock ?? default;
         }
-        
-        
+
+
+        public InstrumentSo GetByType(InstrumentType type)
+        {
+            return _instruments.FirstOrDefault(x => x.Type == type);
+        }
     }
 }

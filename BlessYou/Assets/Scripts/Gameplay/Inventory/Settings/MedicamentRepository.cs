@@ -25,6 +25,11 @@ namespace Gameplay.Inventory.Settings
             }
             return customKeyValue != null ? customKeyValue.PriceToBuy : default;
         }
+        
+        public MedicamentSo GetByType(MedicamentType type)
+        {
+            return _medicaments.FirstOrDefault(x => x.Type == type);
+        }
     }
 
 }

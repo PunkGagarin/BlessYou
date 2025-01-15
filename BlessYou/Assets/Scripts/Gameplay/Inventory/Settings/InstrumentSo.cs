@@ -11,6 +11,9 @@ namespace Gameplay.Inventory.Settings
 
         [field: SerializeField]
         public int PriceToUnlock { get; private set; }
+        
+        [field: SerializeField]
+        public int DayToUnlock { get; private set; }
 
         [field: SerializeField]
         public bool IsUnlockedByDefault { get; private set; }

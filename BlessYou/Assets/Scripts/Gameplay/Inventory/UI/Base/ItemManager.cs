@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using Gameplay.Inventory.Settings;
 using UnityEngine;
 using Zenject;
 
 namespace Gameplay.Inventory.UI.Base
 {
-    public abstract class ItemManager<T, TUI, TS> : MonoBehaviour
-        where TUI : BaseInventoryUI<T, TS> where TS : BaseSlotUI<T>
+    public abstract class ItemManager<T, TUI, TS, TR> : MonoBehaviour
+        where TUI : BaseInventoryUI<T, TS> where TS : BaseSlotUI<T> where TR : ScriptableObject
     {
-        [Inject] private TUI _instrumentaryUI;
+        [Inject] protected TUI _instrumentaryUI;
+        [Inject] protected TR _soRepository;
         
-        protected Dictionary<T, TS> _items = new();
-
-        public void Start()
+        public virtual void Start()
         {
             var slots = _instrumentaryUI.InitialSlots;
 
             foreach (var slot in slots)
             {
-                _items.Add(slot.Type, slot);
+                Init(slot);
                 slot.GetComponent<SlotDragHandler<T>>().OnItemDropped += OnItemDrop;
             }
         }
+
+        protected abstract void Init(TS slot);
 
         public void OnDestroy()
         {
