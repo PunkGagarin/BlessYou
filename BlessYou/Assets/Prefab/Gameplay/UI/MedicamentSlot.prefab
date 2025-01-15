@@ -93,8 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6a458197bb497fbbc3a52def4bc206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nameText: {fileID: 3420691492303554457}
   <Button>k__BackingField: {fileID: 0}
   <Type>k__BackingField: 0
+  _countText: {fileID: 6745965571856163085}
 --- !u!114 &7966110052419930769
 MonoBehaviour:
   m_ObjectHideFlags: 0

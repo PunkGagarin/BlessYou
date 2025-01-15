@@ -15,8 +15,6 @@ namespace Gameplay.Inventory
 
         public void Unlock()
         {
-            if (_unlockedImage == null) return;
-
             _unlockedImage.gameObject.SetActive(true);
             _lockedImage.gameObject.SetActive(false);
             var dragHandler = GetComponent<SlotDragHandler<InstrumentType>>();
@@ -25,8 +23,6 @@ namespace Gameplay.Inventory
 
         public void Lock()
         {
-            if (_unlockedImage == null) return;
-
             _lockedImage.gameObject.SetActive(true);
             _unlockedImage.gameObject.SetActive(false);
             var dragHandler = GetComponent<SlotDragHandler<InstrumentType>>();

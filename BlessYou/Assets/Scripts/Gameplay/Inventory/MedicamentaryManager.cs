@@ -6,11 +6,11 @@ using UnityEngine;
 namespace Gameplay.Inventory
 {
     public class MedicamentaryManager :
-        ItemManager<MedicamentType, MedicamentaryUI, MedicamentBaseSlotUI, MedicamentRepository>
+        ItemManager<MedicamentType, MedicamentaryUI, MedicamentSlotUI, MedicamentRepository>
     {
         protected Dictionary<MedicamentType, MedicamentInfo> _items = new();
 
-        protected override void Init(MedicamentBaseSlotUI slot)
+        protected override void Init(MedicamentSlotUI slot)
         {
             MedicamentInfo info = new MedicamentInfo();
             var medicamentType = slot.Type;

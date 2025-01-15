@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 6
   <PriceToBuy>k__BackingField: 0
-  <StartCount>k__BackingField: 2
+  <StartCount>k__BackingField: 4
   <Icon>k__BackingField: {fileID: 0}

@@ -6,6 +6,6 @@ namespace Gameplay.Inventory
     {
         public MedicamentSo SO { get; set; }
         public int CurrentCount { get; set; }
-        public MedicamentBaseSlotUI View { get; set; }
+        public MedicamentSlotUI View { get; set; }
     }
 }

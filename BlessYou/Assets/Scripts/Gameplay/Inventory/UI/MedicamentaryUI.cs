@@ -3,7 +3,7 @@ using Gameplay.Inventory.UI.Base;
 
 namespace Gameplay.Inventory
 {
-    public class MedicamentaryUI : BaseInventoryUI<MedicamentType, MedicamentBaseSlotUI>
+    public class MedicamentaryUI : BaseInventoryUI<MedicamentType, MedicamentSlotUI>
     {
 
 

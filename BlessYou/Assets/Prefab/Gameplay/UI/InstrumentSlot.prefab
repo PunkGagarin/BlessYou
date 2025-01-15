@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679ea108cfd542caa89fe196c9fae47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nameText: {fileID: 8410290215381746248}
   <Button>k__BackingField: {fileID: 0}
   <Type>k__BackingField: 0
   _unlockedImage: {fileID: 8205516690706263370}
