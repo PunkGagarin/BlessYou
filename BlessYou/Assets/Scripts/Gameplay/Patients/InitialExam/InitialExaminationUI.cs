@@ -1,4 +1,5 @@
 ﻿using Gameplay.Base;
+using Gameplay.Patients.UI;
 using UnityEngine;
 using UnityEngine.UI;
 

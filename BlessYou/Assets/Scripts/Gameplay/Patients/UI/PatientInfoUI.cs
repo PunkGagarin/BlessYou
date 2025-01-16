@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.Patients.InitialExam
+namespace Gameplay.Patients.UI
 {
     public class PatientInfoUI : MonoBehaviour
     {
@@ -41,15 +41,15 @@ namespace Gameplay.Patients.InitialExam
             SetDiseaseInfo(patient.Disease);
         }
 
-        private void SetDiseaseInfo(DiseaseSO patientDisease)
+        protected virtual void SetDiseaseInfo(DiseaseSO patientDisease)
         {
             var heavinessType = patientDisease.HeavinessType;
             string hexColor = ColorUtility.ToHtmlStringRGBA(_heavySicknessColor);
-            
+
             string disTypeText = heavinessType == DiseaseHeavinessType.Heavy
                 ? $"<color=#{hexColor}>{patientDisease.Type}</color>"
                 : patientDisease.Type.ToString();
-            
+
             DiseaseInfo.text = "I have a following problem: " + disTypeText;
         }
     }
