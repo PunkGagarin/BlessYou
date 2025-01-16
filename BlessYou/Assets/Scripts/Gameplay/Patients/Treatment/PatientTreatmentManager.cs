@@ -30,6 +30,7 @@ namespace Gameplay.Treatment
             _instrumentaryManager.OnItemDropped += TryUseInstrument;
             _medicamentaryManager.OnItemDropped += TryUseMedicament;
             _view.CloseButton.onClick.AddListener(HideUI);
+            _patientQueue.EndOfPatientQueue += EndTreatmentIfNoPatientsLeft;
         }
 
         private void OnDestroy()
@@ -39,6 +40,7 @@ namespace Gameplay.Treatment
             _instrumentaryManager.OnItemDropped += TryUseInstrument;
             _medicamentaryManager.OnItemDropped += TryUseMedicament;
             _view.CloseButton.onClick.RemoveListener(HideUI);
+            _patientQueue.EndOfPatientQueue -= EndTreatmentIfNoPatientsLeft;
         }
 
         private void FinishCurrentTreatmentPhase(Patient patient, BedSpotView view, BedInfo bedInfo)

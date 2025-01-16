@@ -33,6 +33,8 @@ namespace Gameplay.Shop
 
         private int _bedsUnlocked = 0;
 
+        private bool isInited;
+
         public void Initialize()
         {
             _ui.UnlockNewBedButton.onClick.AddListener(UnlockNewBed);
@@ -42,8 +44,6 @@ namespace Gameplay.Shop
             {
                 slot.OnButtonClicked += BuyMedicament;
             }
-
-            InitUi();
         }
 
         public void Dispose()
@@ -68,6 +68,8 @@ namespace Gameplay.Shop
                 int count = _medicamentaryManager.GetItemCount(slot.Type);
                 slot.SetCount(count);
             }
+
+            isInited = true;
         }
 
         private void BuyMedicament(MedicamentType type)
@@ -80,6 +82,9 @@ namespace Gameplay.Shop
 
         private void ShowShop()
         {
+            if (!isInited)
+                InitUi();
+
             _ui.Show();
             SetButtonStatuses();
         }
@@ -107,7 +112,7 @@ namespace Gameplay.Shop
         {
             _bedManager.UnlockNewBed();
             _bedsUnlocked++;
-            
+
             // SetBedButtonStatus();
             SetButtonStatuses();
         }
