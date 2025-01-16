@@ -47,11 +47,8 @@ namespace Gameplay.Patients.PatientQueue
         
         private void OnPatientDistributed()
         {
-            // if (_patients.Count == 0)
-            // {
-            //     FinishQueue();
-            //     return;
-            // }
+            if (_patients.Count == 0)
+                return;
 
             ProceedNextPatient();
         }
