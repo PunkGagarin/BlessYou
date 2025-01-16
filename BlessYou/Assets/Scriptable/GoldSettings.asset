@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2d453936e9476391316b5bf1d69b91, type: 3}
   m_Name: GoldSettings
   m_EditorClassIdentifier: 
-  <InitialGold>k__BackingField: 5000
+  <InitialGold>k__BackingField: 2000
   <GoldPerHealed>k__BackingField: 50
   <GoldPerDead>k__BackingField: 30

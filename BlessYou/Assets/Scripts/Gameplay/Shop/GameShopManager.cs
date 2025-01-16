@@ -1,6 +1,7 @@
 ﻿using System;
 using Gameplay.GameResources;
 using Gameplay.Treatment.Beds;
+using UnityEngine;
 using Zenject;
 
 namespace Gameplay.Shop
@@ -22,6 +23,8 @@ namespace Gameplay.Shop
         [Inject]
         private PlayerGoldUI _goldUi;
 
+        private int _bedsUnlocked = 0;
+
         public void Initialize()
         {
             _ui.UnlockNewBedButton.onClick.AddListener(UnlockNewBed);
@@ -41,6 +44,14 @@ namespace Gameplay.Shop
         private void ShowShop()
         {
             _ui.Show();
+            SetButtonStatuses();
+        }
+
+        private void SetButtonStatuses()
+        {
+            int bedCost = _bedSettings.GetBedPrice(_bedsUnlocked);
+            bool canBuyBed = _playerGoldManager.HasEnoughMoney(bedCost) && _bedManager.HasBedsToUnlock();
+            _ui.UnlockNewBedButton.interactable = canBuyBed;
         }
 
         private void CloseShop()
@@ -57,10 +68,16 @@ namespace Gameplay.Shop
         private void UnlockNewBed()
         {
             _bedManager.UnlockNewBed();
+            _bedsUnlocked++;
+            
+            SetBedButtonStatus();
+        }
 
+        private void SetBedButtonStatus()
+        {
             if (_bedManager.HasBedsToUnlock())
             {
-                int newPrice = _bedSettings.GetBedPrice(_bedSettings.InitialUnlockedBeds);
+                int newPrice = _bedSettings.GetBedPrice(_bedsUnlocked);
                 _ui.SetBedPrice(newPrice);
             }
             else
