@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Gameplay.Beds;
 using UnityEngine;
 using Zenject;
 
@@ -17,8 +18,9 @@ namespace Gameplay.Treatment.Beds
         private readonly Dictionary<BedSpotView, BedInfo> _beds = new();
 
         public event Action<Patient, BedSpotView> OnBedWithPatientInteracted = delegate { };
+        public event Action<Patient, BedSpotView, BedInfo> OnBedTimerEnds = delegate { };
 
-        private void Awake()
+        private void Start()
         {
             InitBeds();
         }
@@ -29,7 +31,8 @@ namespace Gameplay.Treatment.Beds
             for (int index = 0; index < _bedViews.Count; index++)
             {
                 var bedView = _bedViews[index];
-                _beds[bedView] = new BedInfo();
+                var bedInfo = new BedInfo();
+                _beds[bedView] = bedInfo;
 
                 if (index < unlockedBeds)
                 {
@@ -42,13 +45,22 @@ namespace Gameplay.Treatment.Beds
                 }
 
                 bedView.OnClicked += bedViewOnOnBedClicked(bedView);
+                bedView.OnTimerEnds += EndTimerForBed(bedView, bedInfo);
             }
+        }
+
+        private Action EndTimerForBed(BedSpotView bedView, BedInfo bedInfo)
+        {
+            return () => OnBedTimerEnds.Invoke(bedInfo.Patient, bedView, bedInfo);
         }
 
         private void OnDestroy()
         {
             foreach (var bedView in _beds.Keys)
+            {
                 bedView.OnClicked -= bedViewOnOnBedClicked(bedView);
+                bedView.OnTimerEnds -= EndTimerForBed(bedView, _beds[bedView]);
+            }
         }
 
         private Action bedViewOnOnBedClicked(BedSpotView bedView)
@@ -68,6 +80,7 @@ namespace Gameplay.Treatment.Beds
                 if (!bed.HasPatient)
                 {
                     bed.Patient = patient;
+                    bed.CurrentTreatmentType = TreatmentType.View;
                     view.SetPatient(patient);
                     return;
                 }
@@ -89,16 +102,6 @@ namespace Gameplay.Treatment.Beds
             return TryGetFreeBed(out _);
         }
 
-        public void MakeBedsWithPatientInteractable()
-        {
-            // Debug.Log("making beds interactable");
-            // foreach (var (view, bedInfo) in _beds)
-            // {
-            //     if (bedInfo.HasPatient)
-            //         view.TurnOnInteract();
-            // }
-        }
-
         public void CleanBeds()
         {
             foreach (var (view, bed) in _beds.Where(bed => bed.Value.HasPatient))
@@ -115,6 +118,11 @@ namespace Gameplay.Treatment.Beds
         {
             return _beds.Where(bed => bed.Value.HasPatient)
                 .All(bed => bed.Value.Patient.HasTreatment);
+        }
+
+        public bool HasNoPatientsLeft()
+        {
+            return !_beds.Any( bed => bed.Value.HasPatient);
         }
 
         public List<Patient> GetAllPatientsInBeds()
@@ -137,6 +145,22 @@ namespace Gameplay.Treatment.Beds
         public bool HasBedsToUnlock()
         {
             return _beds.Any(bed => !bed.Value.IsUnlocked);
+        }
+
+        public void CleanBed(BedSpotView view)
+        {
+            var bed = _beds.FirstOrDefault(bed => bed.Value.HasPatient);
+
+            bed.Value.Patient = null;
+            view.CleanFromPatient();
+        }
+
+        public void StartHealFor(BedSpotView bed)
+        {
+            BedInfo bedInfo = _beds[bed];
+            bed.TurnOffInteract();
+            bed.SetTimer(bedInfo.Patient.Disease.HealInfo.HealTime);
+            bedInfo.CurrentTreatmentType = TreatmentType.Healing;
         }
     }
 }

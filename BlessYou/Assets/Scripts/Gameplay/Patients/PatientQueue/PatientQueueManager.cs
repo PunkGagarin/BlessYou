@@ -47,11 +47,11 @@ namespace Gameplay.Patients.PatientQueue
         
         private void OnPatientDistributed()
         {
-            if (_patients.Count == 0)
-            {
-                FinishQueue();
-                return;
-            }
+            // if (_patients.Count == 0)
+            // {
+            //     FinishQueue();
+            //     return;
+            // }
 
             ProceedNextPatient();
         }
@@ -93,6 +93,11 @@ namespace Gameplay.Patients.PatientQueue
             _view.MoveLine();
             var randomTime = _queueSettings.GetRandomQueueTime();
             _view.SetTimer(randomTime);
+        }
+
+        public bool HasPatientsInQueue()
+        {
+            return _patients.Count > 0;
         }
     }
 }

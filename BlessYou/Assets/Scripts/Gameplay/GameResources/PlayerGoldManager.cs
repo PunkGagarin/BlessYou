@@ -36,6 +36,16 @@ namespace Gameplay
             return goldSettingsGoldPerHealed;
         }
 
+        public int GetGoldForHealedPatient(Patient patient)
+        {
+            return _goldSettings.GoldPerHealed;
+        }
+        
+        public int GetGoldForDeadPatient(Patient patient)
+        {
+            return -_goldSettings.GoldPerDead;
+        }
+
         public int GetPenaltyForDeadPatient(Patient patient)
         {
             int goldSettingsGoldPerDead = _goldSettings.GoldPerDead;
@@ -52,6 +62,12 @@ namespace Gameplay
         public void SpendGold(int goldToSpend)
         {
             _gold -= goldToSpend;
+            Gold = Mathf.Clamp(Gold, 0, 9999);
+        }
+
+        public void AddGold(int goldDifference)
+        {
+            _gold += goldDifference;
         }
     }
 

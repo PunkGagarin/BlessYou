@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Gameplay.DayResults;
+using Gameplay.News;
 using Gameplay.Treatment.Beds;
 using UnityEngine;
 using Zenject;
@@ -12,51 +13,42 @@ namespace Gameplay.Results
     /// </summary>
     public class TreatmentResultManager : MonoBehaviour
     {
-
         [Inject] private BedManager _bedManager;
         [Inject] private PlayerGoldManager _goldManager;
+        [Inject] private NewspaperManager _newspaperManager;
 
         public TreatmentResultInfo CurrentTreatmentResults { get; private set; } = new();
 
-        public void CalculateResults()
+        public void CalculateResults(int day)
         {
-            CurrentTreatmentResults = new TreatmentResultInfo();
-            List<Patient> patients = _bedManager.GetAllPatientsInBeds();
-            int goldResult = 0;
+            int goldDifference = CurrentTreatmentResults.GoldDifference;
 
-            foreach (Patient patient in patients)
-            {
-                // Get AnamnesisCard
-                // Get heal result depends on AnamenesisCard
-
-                bool treatmentResultFor = GetTreatmentResultFor(patient);
-                
-                Debug.Log($"Patient {patient} is healed or dead: {treatmentResultFor} ");
-                patient.IsHealed = treatmentResultFor;
-                patient.IsDead = !treatmentResultFor;
-
-                if (patient.IsHealed)
-                {
-                    goldResult += _goldManager.AddGoldForHealedPatient(patient);
-                    CurrentTreatmentResults.HealedPatients++;
-                    CurrentTreatmentResults.HealedPatientsList.Add(patient);
-                }
-                else if (patient.IsDead)
-                {
-                    goldResult += _goldManager.GetPenaltyForDeadPatient(patient);
-                    CurrentTreatmentResults.DeadPatients++;
-                    CurrentTreatmentResults.DeadPatientsList.Add(patient);
-                }
-            }
-            CurrentTreatmentResults.GoldDifference = goldResult;
+            if (goldDifference > 0)
+                _goldManager.AddGold(goldDifference);
+            else
+                _goldManager.SpendGold(goldDifference);
 
             _bedManager.CleanBeds();
+            _newspaperManager.GenerateDayNews(day, CurrentTreatmentResults);
+            CurrentTreatmentResults = new();
         }
 
-        private bool GetTreatmentResultFor(Patient patient)
+        public void SetDeadPatient(Patient patient)
         {
-            //todo: implement me????
-            return Random.value > 0.5f;
+            int goldResult = _goldManager.GetGoldForDeadPatient(patient);
+            CurrentTreatmentResults.GoldDifference += goldResult;
+            CurrentTreatmentResults.DeadPatients++;
+            CurrentTreatmentResults.DeadPatientsList.Add(patient);
+            Debug.Log("Patient is dead");
+        }
+
+        public void SetHealedPatient(Patient patient)
+        {
+            int goldResult = _goldManager.GetGoldForHealedPatient(patient);
+            CurrentTreatmentResults.GoldDifference += goldResult;
+            CurrentTreatmentResults.HealedPatients++;
+            CurrentTreatmentResults.HealedPatientsList.Add(patient);
+            Debug.Log("Patient is healed");
         }
     }
 

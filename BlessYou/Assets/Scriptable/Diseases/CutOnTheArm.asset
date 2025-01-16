@@ -20,3 +20,4 @@ MonoBehaviour:
     <MedicamentType>k__BackingField: 8
     <ExtraMedType>k__BackingField: 2
     <HealTime>k__BackingField: 25
+    <TreatmentTime>k__BackingField: 50

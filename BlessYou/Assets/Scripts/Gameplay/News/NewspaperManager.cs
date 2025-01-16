@@ -11,7 +11,6 @@ namespace Gameplay.News
     {
 
         [Inject] private NewspaperUI _ui;
-        [Inject] private TreatmentResultManager _treatmentResult;
         [Inject] private TableView _tableView;
         [Inject] private FamilyManager _familyManager;
         // [Inject] private NewsEventDataProvider _newsEventDataProvider;
@@ -38,11 +37,9 @@ namespace Gameplay.News
             _ui.Hide();
         }
 
-        public void GenerateDayNews(int currentDay)
+        public void GenerateDayNews(int currentDay, TreatmentResultInfo results)
         {
-            var treatResult = _treatmentResult.CurrentTreatmentResults;
-
-            _ui.SetInfo(treatResult, _familyManager.FamilyDaysWithoutFood, currentDay);
+            _ui.SetInfo(results, _familyManager.FamilyDaysWithoutFood, currentDay);
         }
     }
 

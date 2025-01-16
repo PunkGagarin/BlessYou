@@ -15,5 +15,5 @@ MonoBehaviour:
   <Type>k__BackingField: 4
   <PriceToUnlock>k__BackingField: 37
   <DayToUnlock>k__BackingField: 9
-  <IsUnlockedByDefault>k__BackingField: 0
+  <IsUnlockedByDefault>k__BackingField: 1
   <Icon>k__BackingField: {fileID: 21300000, guid: 26cd9eea1478a144b9d9dbb219dd19a9, type: 3}

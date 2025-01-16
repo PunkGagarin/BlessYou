@@ -7,7 +7,7 @@ namespace Gameplay.Patients.UI
 
         protected override void SetDiseaseInfo(DiseaseSO patientDisease)
         {
-            DiseaseInfo.text = patientDisease.Type.ToString();
+            DiseaseInfo.text = patientDisease.Name;
         }
 
     }

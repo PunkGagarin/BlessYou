@@ -1,5 +1,4 @@
-﻿using System;
-using Gameplay.DayResults;
+﻿using Gameplay.DayResults;
 using Gameplay.News;
 using Gameplay.Patients.PatientQueue;
 using Gameplay.Results;
@@ -46,7 +45,6 @@ namespace Gameplay
 
             CalculatePreviousDay();
             PrepareNewDayUI();
-            ShowNews();
         }
 
         private void PrepareNewDayUI()
@@ -59,12 +57,7 @@ namespace Gameplay
         private void CalculatePreviousDay()
         {
             _familyManager.TrySpendFamilyFood(_currentDay);
-            _treatmentResultManager.CalculateResults();
-        }
-
-        private void ShowNews()
-        {
-            _newspaperManager.GenerateDayNews(_currentDay);
+            _treatmentResultManager.CalculateResults(_currentDay);
         }
 
         private void StartPatientQueue()

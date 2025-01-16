@@ -12,7 +12,7 @@ namespace Gameplay.Inventory.UI.Base
         private Vector2 originalPosition;
 
         public T Type { get; set; }
-        public bool CanDrag { get; set; }
+        public bool CanDrag { get; set; } = true;
 
         public Action<T> OnItemDropped = delegate { };
 

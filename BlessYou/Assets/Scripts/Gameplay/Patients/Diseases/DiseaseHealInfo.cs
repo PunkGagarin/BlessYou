@@ -18,5 +18,8 @@ namespace Gameplay.Patients.Generation
 
         [field: SerializeField]
         public float HealTime { get; set; } = 30f;
+        
+        [field: SerializeField]
+        public float TreatmentTime { get; set; } = 10f;
     }
 }
