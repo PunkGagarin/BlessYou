@@ -14,5 +14,7 @@ namespace Gameplay.Inventory
         {
             _countText.text = count.ToString();
         }
+        
+        
     }
 }

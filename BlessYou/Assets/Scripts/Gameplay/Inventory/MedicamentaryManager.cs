@@ -51,6 +51,19 @@ namespace Gameplay.Inventory
                 medicamentInfo.View.SetCount(medicamentInfo.CurrentCount);
             }
         }
+
+        public int AddItem(MedicamentType type)
+        {
+            var medicamentInfo = _items[type];
+            medicamentInfo.CurrentCount += 1;
+            medicamentInfo.View.SetCount(medicamentInfo.CurrentCount);
+            return medicamentInfo.CurrentCount;
+        }
+
+        public int GetItemCount(MedicamentType slotType)
+        {
+            return _items[slotType].CurrentCount;
+        }
     }
 
 }

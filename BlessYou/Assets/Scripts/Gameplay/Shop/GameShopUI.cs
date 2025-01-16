@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using Gameplay.Inventory;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +20,9 @@ namespace Gameplay.Shop
 
         [field: SerializeField]
         public Button CloseShopButton { get; private set; }
+        
+        [field: SerializeField]
+        public List<MedicamentShopSlotUI> MedicamentSlotUIs { get; private set; }
 
         public void SetBedPrice(int bedPrice)
         {
@@ -28,5 +33,10 @@ namespace Gameplay.Shop
         public void Hide() => _content.SetActive(false);
 
 
+        public void SetMedCountFor(MedicamentType type, int newCount)
+        {
+            var slot = MedicamentSlotUIs.Find(x => x.Type == type);
+            slot.SetCount(newCount);
+        }
     }
 }
