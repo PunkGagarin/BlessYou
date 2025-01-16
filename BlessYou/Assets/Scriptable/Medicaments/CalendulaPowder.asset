@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb19a72ef44b495db6dd5bfe1c81423f, type: 3}
-  m_Name: New Medicament
+  m_Name: CalendulaPowder
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 9
-  <PriceToBuy>k__BackingField: 4
-  <StartCount>k__BackingField: 2
-  <Icon>k__BackingField: {fileID: 21300000, guid: 7ff2dae5079129b4c88e68f30ad30c87, type: 3}
+  <Type>k__BackingField: 4
+  <PriceToBuy>k__BackingField: 10
+  <StartCount>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 21300000, guid: a80261663b4f50142958ff87b1e01b3f, type: 3}

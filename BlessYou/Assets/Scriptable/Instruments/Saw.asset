@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46c2b795e5784ec6a808fb64887c5264, type: 3}
-  m_Name: New Instrument 3
+  m_Name: Saw
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 5
-  <PriceToUnlock>k__BackingField: 29
-  <DayToUnlock>k__BackingField: 5
+  <Type>k__BackingField: 1
+  <PriceToUnlock>k__BackingField: 25
+  <DayToUnlock>k__BackingField: 3
   <IsUnlockedByDefault>k__BackingField: 0
-  <Icon>k__BackingField: {fileID: 21300000, guid: 587025cbf7f46fe4c94b1f5d09d06ba4, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 5b69f83a14e6bb74cadd3c3feaba9a69, type: 3}
