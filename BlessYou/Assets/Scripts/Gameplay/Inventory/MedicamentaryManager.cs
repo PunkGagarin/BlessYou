@@ -8,7 +8,7 @@ namespace Gameplay.Inventory
     public class MedicamentaryManager :
         ItemManager<MedicamentType, MedicamentaryUI, MedicamentSlotUI, MedicamentRepository>
     {
-        protected Dictionary<MedicamentType, MedicamentInfo> _items = new();
+        private readonly Dictionary<MedicamentType, MedicamentInfo> _items = new();
 
         protected override void Init(MedicamentSlotUI slot)
         {
@@ -35,6 +35,21 @@ namespace Gameplay.Inventory
             }
             else
                 Debug.Log("Не хватает медикаментов, тип: " + type);
+        }
+
+        public bool HasItem(MedicamentType medType)
+        {
+            return medType == MedicamentType.None || _items[medType].CurrentCount > 0;
+        }
+
+        public void Spend(MedicamentType type)
+        {
+            var medicamentInfo = _items[type];
+            if (medicamentInfo.CurrentCount > 0)
+            {
+                medicamentInfo.CurrentCount--;
+                medicamentInfo.View.SetCount(medicamentInfo.CurrentCount);
+            }
         }
     }
 

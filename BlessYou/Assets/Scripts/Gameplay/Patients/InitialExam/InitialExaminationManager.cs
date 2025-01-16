@@ -1,4 +1,7 @@
 ﻿using System;
+using Gameplay.Inventory;
+using Gameplay.Patients.Diseases;
+using Gameplay.Patients.Generation;
 using Gameplay.Treatment.Beds;
 using UnityEngine;
 using Zenject;
@@ -9,6 +12,8 @@ namespace Gameplay.Patients.InitialExam
     {
         [Inject] private InitialExaminationUI _ui;
         [Inject] private BedManager _bedManager;
+        [Inject] private MedicamentaryManager _medicamentaryManager;
+        [Inject] private InstrumentaryManager _instrumentaryManager;
 
         private Patient _currentPatient;
 
@@ -46,7 +51,8 @@ namespace Gameplay.Patients.InitialExam
 
         private void QuickHealPatient()
         {
-            throw new NotImplementedException();
+            _medicamentaryManager.Spend(_currentPatient.Disease.HealInfo.MedicamentType);
+            _ui.Hide();
             OnPatientDistributed.Invoke();
         }
 
@@ -63,7 +69,7 @@ namespace Gameplay.Patients.InitialExam
             // SetEventButtonStatus
 
             bool acceptButtonActive = GetAcceptButtonStatus();
-            bool quickHealButtonActive = GetQuickHealButtonStatus();
+            bool quickHealButtonActive = GetQuickHealButtonStatus(patient.Disease);
 
             _ui.SetAcceptButtonStatus(acceptButtonActive);
             _ui.SetQuickHealButtonStatus(quickHealButtonActive);
@@ -77,10 +83,13 @@ namespace Gameplay.Patients.InitialExam
             return _bedManager.HasFreeBed();
         }
 
-        private bool GetQuickHealButtonStatus()
+        private bool GetQuickHealButtonStatus(DiseaseSO disease)
         {
-            //todo: implement me
-            return false;
+            bool hasMed = _medicamentaryManager.HasItem(disease.HealInfo.MedicamentType);
+            bool hasInstr = _instrumentaryManager.HasItem(disease.HealInfo.InstrumentType);
+            bool isLight = disease.HeavinessType == DiseaseHeavinessType.Light;
+
+            return hasMed && hasInstr && isLight;
         }
     }
 }

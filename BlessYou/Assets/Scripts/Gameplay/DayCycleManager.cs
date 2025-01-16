@@ -22,7 +22,6 @@ namespace Gameplay
 
         private void Start()
         {
-            _queueManager.EndOfPatientQueue += StartTreatment;
             _treatmentManager.EndOfTreatment += ShowEndDayButton;
             _startDayButtonUI.EndDayButton.onClick.AddListener(StartPatientQueue);
             _endDayButtonUI.EndDayButton.onClick.AddListener(EndCurrentDay);
@@ -32,7 +31,6 @@ namespace Gameplay
 
         private void OnDestroy()
         {
-            _queueManager.EndOfPatientQueue -= StartTreatment;
             _treatmentManager.EndOfTreatment -= ShowEndDayButton;
             _startDayButtonUI.EndDayButton.onClick.RemoveListener(StartPatientQueue);
             _endDayButtonUI.EndDayButton.onClick.RemoveListener(EndCurrentDay);
@@ -64,11 +62,6 @@ namespace Gameplay
         {
             _startDayButtonUI.Hide();
             _queueManager.StartPatientQueue(_currentDay);
-        }
-
-        private void StartTreatment()
-        {
-            _treatmentManager.StartPatientTreatment();
         }
 
         private void ShowEndDayButton()

@@ -18,8 +18,6 @@ namespace Gameplay.Patients.PatientQueue
 
         private Patient _currentPatient;
 
-        public event Action EndOfPatientQueue = delegate { };
-
         private void Awake()
         {
             _view.NextPatientButton.onClick.AddListener(ShowNextPatientUI);
@@ -48,17 +46,12 @@ namespace Gameplay.Patients.PatientQueue
         private void OnPatientDistributed()
         {
             if (_patients.Count == 0)
+            {
+                HideNextPatientButton();
                 return;
+            }
 
             ProceedNextPatient();
-        }
-
-        private void FinishQueue()
-        {
-            Debug.Log($"Закончился первичный осмотр, Началось лечение пациентов");
-            HideNextPatientButton();
-
-            EndOfPatientQueue.Invoke();
         }
 
         public void HideNextPatientButton()

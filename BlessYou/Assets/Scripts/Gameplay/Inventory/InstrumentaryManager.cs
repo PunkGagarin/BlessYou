@@ -7,9 +7,10 @@ using Zenject;
 
 namespace Gameplay.Inventory
 {
-    public class InstrumentaryManager : 
+    public class InstrumentaryManager :
         ItemManager<InstrumentType, InstrumentaryUI, InstrumentSlotUI, InstrumentRepository>
     {
+        private readonly Dictionary<InstrumentType, InstrumentInfo> _items = new();
 
         protected override void Init(InstrumentSlotUI slot)
         {
@@ -19,6 +20,13 @@ namespace Gameplay.Inventory
             else
                 slot.Lock();
 
+            InstrumentInfo info = new InstrumentInfo();
+            var type = slot.Type;
+            _items.Add(type, info);
+
+            info.SO = so;
+            info.IsUnlocked = so.IsUnlockedByDefault;
+
             slot.SetSprite(so.Icon);
         }
 
@@ -27,5 +35,11 @@ namespace Gameplay.Inventory
             Debug.Log("On instrument dropped on proper area, type: " + type);
             OnItemDropped.Invoke(type);
         }
+
+        public bool HasItem(InstrumentType healInfoInstrumentType)
+        {
+            return healInfoInstrumentType == InstrumentType.None || _items.ContainsKey(healInfoInstrumentType);
+        }
     }
+
 }
