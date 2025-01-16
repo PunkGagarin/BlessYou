@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Gameplay.Inventory;
+using TMPro;
 using UnityEngine;
 
 namespace Gameplay.Treatment
@@ -14,11 +15,16 @@ namespace Gameplay.Treatment
         [SerializeField]
         private TextMeshProUGUI _medicamentText;
 
-        public void SetDiseaseHealInfo(string diseaseName, string instrument, string medicament)
+        public void SetDiseaseHealInfo(string diseaseName, InstrumentType instrument, MedicamentType medicament)
         {
             _diseaseName.text = diseaseName;
-            _instrumentText.text = instrument;
-            _medicamentText.text = medicament;
+            if(instrument == InstrumentType.None)
+                _instrumentText.gameObject.SetActive(false);
+            _instrumentText.text = instrument.ToString();
+            
+            if(medicament == MedicamentType.None)
+                _medicamentText.gameObject.SetActive(false);
+            _medicamentText.text = medicament.ToString();
         }
     }
 }

@@ -51,6 +51,26 @@ MonoBehaviour:
     - Lionel
     - Samuel
   _diseases:
-  - {fileID: 11400000, guid: 11d43981f0a1db147ba4fb1479cac6a7, type: 2}
-  - {fileID: 11400000, guid: c7c395ffe2342dc4682406d698540c32, type: 2}
   - {fileID: 11400000, guid: 967db94c34908fe44a163fe6a2cd82d1, type: 2}
+  - {fileID: 11400000, guid: 74c04ce3d28fda147921543fb4f6f9f8, type: 2}
+  - {fileID: 11400000, guid: 4a6b9b2c42f8f8e479be4483925c4fc6, type: 2}
+  - {fileID: 11400000, guid: 352e7dcc226d7e742950ba451e1d7a81, type: 2}
+  - {fileID: 11400000, guid: ace9106498eca6b489a69615cc8768c5, type: 2}
+  - {fileID: 11400000, guid: 0fcc4e61de0884b40867130d72561577, type: 2}
+  - {fileID: 11400000, guid: c8e28a785bdd92440b9d85bb5ec803d4, type: 2}
+  - {fileID: 11400000, guid: 122df108c6792e1428cd1ba788d36a39, type: 2}
+  - {fileID: 11400000, guid: 0bd42608811c09541b7e6bca20f13321, type: 2}
+  - {fileID: 11400000, guid: 8bbe6da072a2d104a807ed5120738654, type: 2}
+  - {fileID: 11400000, guid: 393f4fcde1a30ab42be62ed78955ab07, type: 2}
+  - {fileID: 11400000, guid: f773bfbf5578cc54985149410ae7bd56, type: 2}
+  - {fileID: 11400000, guid: b8daec34a899a0948999482ab67449a7, type: 2}
+  - {fileID: 11400000, guid: 48c2fcdee15ec80469abd36dc62e010b, type: 2}
+  - {fileID: 11400000, guid: 9343c2d367dd100488b2e2da7c37c2fc, type: 2}
+  - {fileID: 11400000, guid: d6fe5adbfbdeab945bcdbaca2cae5189, type: 2}
+  - {fileID: 11400000, guid: 258603b553eee354b9dbad8560dacef2, type: 2}
+  - {fileID: 11400000, guid: 967db94c34908fe44a163fe6a2cd82d1, type: 2}
+  - {fileID: 11400000, guid: eece5a7b9e08b4e46831c28c1e77d7cd, type: 2}
+  - {fileID: 11400000, guid: e9869c93555adb84c882dd7557ac4d8e, type: 2}
+  - {fileID: 11400000, guid: 7ca4f0d519f09984d946013d66d85876, type: 2}
+  - {fileID: 11400000, guid: a04d586be06063c4a81456425f0852e9, type: 2}
+  - {fileID: 11400000, guid: 90887e3fe5dd85c49ae42fd2760ff631, type: 2}

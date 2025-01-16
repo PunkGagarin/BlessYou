@@ -22,7 +22,7 @@ namespace Gameplay.Treatment
             {
                 var disease = diseases[index];
 
-                if (index > _diseasePanels.Count + 1)
+                if (index >= _diseasePanels.Count)
                 {
                     var panelInst = Instantiate(_panelPrefab, _contentParent);
                     _diseasePanels.Add(panelInst);
@@ -31,8 +31,8 @@ namespace Gameplay.Treatment
                 var panel = _diseasePanels[index];
 
                 panel.SetDiseaseHealInfo(disease.Name,
-                    disease.HealInfo.InstrumentType.ToString(),
-                    disease.HealInfo.MedicamentType.ToString());
+                    disease.HealInfo.InstrumentType,
+                    disease.HealInfo.MedicamentType);
             }
 
             if (_diseasePanels.Count > diseases.Count)
