@@ -1,4 +1,5 @@
 ﻿using Gameplay.Base;
+using Gameplay.Patients.Treatment;
 using Gameplay.Patients.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,10 +28,14 @@ namespace Gameplay.Patients.InitialExam
         [field: SerializeField]
         public PatientInfoUI PatientInfoUI { get; private set; }
 
+        [field: SerializeField]
+        private PatientTreatmentVisualizer _visualizer;
+
         public void ShowPatient(Patient patient)
         {
             Debug.Log("Показываем информацию о пациенте");
             PatientInfoUI.SetInfo(patient);
+            _visualizer.SetVisual(patient.Visual);
             Show();
         }
 
