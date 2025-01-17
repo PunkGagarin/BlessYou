@@ -44,10 +44,15 @@ namespace Gameplay
         public int GetGoldForHealedPatient(Patient patient)
         {
             int baseGold = _goldSettings.GoldPerHealed;
+            return GoldForPatient(patient, baseGold);
+        }
+
+        private int GoldForPatient(Patient patient, int baseGold)
+        {
             int rank = (int)patient.Rank;
             float baseRankMultiplier = _goldSettings.RankMultiplier;
 
-            float rankMultiplier = rank * baseRankMultiplier;
+            float rankMultiplier = 1 + rank * baseRankMultiplier;
             float heavinessMultiplier = 1f;
             if (patient.Disease.HeavinessType == DiseaseHeavinessType.Heavy)
                 heavinessMultiplier = 1.5f;
@@ -58,7 +63,8 @@ namespace Gameplay
 
         public int GetGoldForDeadPatient(Patient patient)
         {
-            return -GetGoldForHealedPatient(patient);
+            int baseGold = _goldSettings.GoldPerDead;
+            return -GoldForPatient(patient, baseGold);
         }
 
         public int GetPenaltyForDeadPatient(Patient patient)

@@ -20,9 +20,7 @@ namespace Gameplay.DayResults
         public void CalculateResults(int day)
         {
             int goldDifference = CurrentTreatmentResults.GoldDifference;
-
             _goldManager.AddGold(goldDifference);
-
             _bedManager.CleanBeds();
             _newspaperManager.GenerateDayNews(day, CurrentTreatmentResults);
             CurrentTreatmentResults = new();
@@ -34,7 +32,7 @@ namespace Gameplay.DayResults
             CurrentTreatmentResults.GoldDifference += goldResult;
             CurrentTreatmentResults.DeadPatients++;
             CurrentTreatmentResults.DeadPatientsList.Add(patient);
-            Debug.Log("Patient is dead");
+            Debug.Log("Patient is dead, gold for dead: " + goldResult);
         }
 
         public void SetHealedPatient(Patient patient)
@@ -43,7 +41,7 @@ namespace Gameplay.DayResults
             CurrentTreatmentResults.GoldDifference += goldResult;
             CurrentTreatmentResults.HealedPatients++;
             CurrentTreatmentResults.HealedPatientsList.Add(patient);
-            Debug.Log("Patient is healed");
+            Debug.Log("Patient is healed gold for healed: " + goldResult);
         }
 
         public void SetKickedOutPatient(Patient currentPatient)
