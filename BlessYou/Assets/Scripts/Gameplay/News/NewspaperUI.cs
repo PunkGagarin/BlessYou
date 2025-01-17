@@ -41,7 +41,8 @@ namespace Gameplay.News
             _newsHeader.text = $"Day {currentday}";
             _newsText.text = $"Healed patients: {info.HealedPatients}\n" +
                              $"Dead patients: {info.DeadPatients}\n" +
-                             $"Gold difference: {info.GoldDifference}";
+                             $"Gold difference: {info.GoldDifference}\n" +
+                             $"Family cost: {info.FamilyCost}";
 
             if (familyDaysWithoutFood > 0)
                 _newsText.text += $"\nFamily days without food: {familyDaysWithoutFood}";

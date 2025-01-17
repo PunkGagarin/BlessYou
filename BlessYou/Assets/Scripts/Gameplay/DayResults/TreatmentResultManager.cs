@@ -13,6 +13,7 @@ namespace Gameplay.DayResults
         [Inject] private BedManager _bedManager;
         [Inject] private PlayerGoldManager _goldManager;
         [Inject] private NewspaperManager _newspaperManager;
+        [Inject] private FamilyManager _familyManager;
 
 
         private TreatmentResultInfo CurrentTreatmentResults { get; set; } = new();
@@ -20,6 +21,7 @@ namespace Gameplay.DayResults
         public void CalculateResults(int day)
         {
             int goldDifference = CurrentTreatmentResults.GoldDifference;
+            CurrentTreatmentResults.FamilyCost = _familyManager.GetFamilyCost(day);
             _goldManager.AddGold(goldDifference);
             _bedManager.CleanBeds();
             _newspaperManager.GenerateDayNews(day, CurrentTreatmentResults);
