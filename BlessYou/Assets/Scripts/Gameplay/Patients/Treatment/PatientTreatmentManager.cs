@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Audio;
 using Gameplay.Beds;
 using Gameplay.Inventory;
 using Gameplay.Patients.PatientQueue;
@@ -18,6 +19,7 @@ namespace Gameplay.Treatment
         [Inject] private MedicamentaryManager _medicamentaryManager;
         [Inject] private TreatmentResultManager _treatmentResults;
         [Inject] private PatientQueueManager _patientQueue;
+        [Inject] private SoundManager _soundManager;
 
         private (Patient patient, BedSpotView bed) _bedWithCurrentPatient;
 
@@ -43,6 +45,12 @@ namespace Gameplay.Treatment
             _patientQueue.EndOfPatientQueue -= EndTreatmentIfNoPatientsLeft;
         }
 
+        private void ShowPatientTreatmentView(Patient patient, BedSpotView bed)
+        {
+            _bedWithCurrentPatient = (patient, bed);
+            _view.ShowPatientInfo(patient);
+        }
+
         private void FinishCurrentTreatmentPhase(Patient patient, BedSpotView view, BedInfo bedInfo)
         {
             if (view == _bedWithCurrentPatient.bed)
@@ -50,7 +58,6 @@ namespace Gameplay.Treatment
 
             if (bedInfo.CurrentTreatmentType == TreatmentType.View)
             {
-                // Patient is Dead
                 patient.IsDead = true;
                 _treatmentResults.SetDeadPatient(patient);
                 _bedManager.CleanBed(view);
@@ -64,15 +71,18 @@ namespace Gameplay.Treatment
             CheckDayForFinish();
         }
 
+        private void HideUI()
+        {
+            _view.Hide();
+        }
+
         private void CheckDayForFinish()
         {
             bool hasNoPatientsOnBeds = _bedManager.HasNoPatientsLeft();
             bool hasPatientsInQueue = _patientQueue.HasPatientsInQueue();
 
             if (!hasPatientsInQueue && hasNoPatientsOnBeds)
-            {
                 EndOfTreatment.Invoke();
-            }
         }
 
         private void TryUseInstrument(InstrumentType type)
@@ -86,6 +96,21 @@ namespace Gameplay.Treatment
                 if (HasNoTreatmentNeeds(patient))
                     StartTreatmentForCurrentPatient();
             }
+            TryUseInstrumentSound(type);
+        }
+
+        private void TryUseInstrumentSound(InstrumentType type)
+        {
+            var soundTypeToUse = GameAudioType.None;
+            if (type == InstrumentType.Ticks)
+                soundTypeToUse = GameAudioType.Scissors;
+            else if (type == InstrumentType.Saw)
+                soundTypeToUse = GameAudioType.Saw;
+            else if (type == InstrumentType.Scalpel)
+                soundTypeToUse = GameAudioType.Scalpel;
+
+            if (soundTypeToUse != GameAudioType.None)
+                _soundManager.PlayRandomSoundByType(soundTypeToUse, Vector3.zero);
         }
 
         private bool HasNoTreatmentNeeds(Patient patient)
@@ -115,11 +140,21 @@ namespace Gameplay.Treatment
                 if (HasNoTreatmentNeeds(patient))
                     StartTreatmentForCurrentPatient();
             }
+            TryUseMedicamentSound(type);
         }
 
-        private void HideUI()
+        private void TryUseMedicamentSound(MedicamentType type)
         {
-            _view.Hide();
+            var medicamentsWithSounds = new List<MedicamentType>
+            {
+                MedicamentType.BasilDrink,
+                MedicamentType.HolyWater,
+                MedicamentType.SageDrink,
+                MedicamentType.LicoriceRootTincture
+            };
+
+            if (medicamentsWithSounds.Contains(type))
+                _soundManager.PlayRandomSoundByType(GameAudioType.Liquid, Vector3.zero);
         }
 
         private void HealPatient()
@@ -136,17 +171,6 @@ namespace Gameplay.Treatment
         {
             if (_bedManager.AllPatientsHealed())
                 EndOfTreatment.Invoke();
-        }
-
-        private void ShowPatientTreatmentView(Patient patient, BedSpotView bed)
-        {
-            _bedWithCurrentPatient = (patient, bed);
-            _view.ShowPatientInfo(patient);
-        }
-
-        public void StartPatientTreatment()
-        {
-            EndTreatmentIfNoPatientsLeft();
         }
     }
 }

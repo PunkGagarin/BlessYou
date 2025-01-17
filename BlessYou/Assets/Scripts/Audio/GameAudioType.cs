@@ -2,6 +2,7 @@
 {
     public enum GameAudioType
     {
+        None = 0,
         ButtonClick = 1,
         Caught = 2,
         Scissors = 3,
