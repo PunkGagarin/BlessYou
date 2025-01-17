@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 2277960298186308011}
   - component: {fileID: 2313306423650602756}
   - component: {fileID: 7976059093983531040}
+  - component: {fileID: 2557384017128974715}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -616,6 +617,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2557384017128974715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530825439883398692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca05faa6cd0a463a898ec397b092670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6619866006039578217
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1011,7 @@ GameObject:
   - component: {fileID: 4299418141473857632}
   - component: {fileID: 2152380226612634586}
   - component: {fileID: 7153962472121302687}
+  - component: {fileID: 6863069130075816619}
   m_Layer: 5
   m_Name: UnlockBedButton
   m_TagString: Untagged
@@ -1107,6 +1121,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6863069130075816619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606293441488101552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca05faa6cd0a463a898ec397b092670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7666030880866494150
 GameObject:
   m_ObjectHideFlags: 0

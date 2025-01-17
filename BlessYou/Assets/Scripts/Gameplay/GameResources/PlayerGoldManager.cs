@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Gameplay.GameResources;
 using UnityEngine;
 using Zenject;
@@ -10,6 +11,7 @@ namespace Gameplay
 
         [Inject] private GoldSettings _goldSettings;
         [Inject] private PlayerGoldUI _goldUI;
+        [Inject] private SoundManager _soundManager;
 
         private int _gold;
 
@@ -18,8 +20,9 @@ namespace Gameplay
             get => _gold;
             set
             {
-                Debug.Log($" Gold changed from {_gold} to {value}");
+                // Debug.Log($" Gold changed from {_gold} to {value}");
                 _gold = value; 
+                _soundManager.PlaySoundByType(GameAudioType.Money, 0, Vector3.zero);
                 _goldUI.SetGold(value);
             }
         }

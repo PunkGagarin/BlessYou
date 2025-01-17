@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Gameplay.Inventory;
 using Gameplay.Patients.Diseases;
 using Gameplay.Patients.Generation;
@@ -16,6 +17,7 @@ namespace Gameplay.Patients.InitialExam
         [Inject] private MedicamentaryManager _medicamentaryManager;
         [Inject] private InstrumentaryManager _instrumentaryManager;
         [Inject] private TreatmentResultManager _resultManager;
+        [Inject] private SoundManager _soundManager;
 
         private Patient _currentPatient;
 
@@ -46,8 +48,8 @@ namespace Gameplay.Patients.InitialExam
 
         public void KickOutPatient()
         {
-            Debug.Log("Мы выгнали пациента");
             _ui.Hide();
+            _resultManager.SetKickedOutPatient(_currentPatient);
             OnPatientDistributed.Invoke();
         }
 
@@ -55,7 +57,6 @@ namespace Gameplay.Patients.InitialExam
         {
             _medicamentaryManager.Spend(_currentPatient.Disease.HealInfo.MedicamentType);
             _ui.Hide();
-            //setheal
             _resultManager.SetHealedPatient(_currentPatient);
             OnPatientDistributed.Invoke();
         }
@@ -69,18 +70,20 @@ namespace Gameplay.Patients.InitialExam
         {
             _currentPatient = patient;
 
-            // SetQuickHealButtonStatus
-            // SetEventButtonStatus
-
             bool acceptButtonActive = GetAcceptButtonStatus();
             bool quickHealButtonActive = GetQuickHealButtonStatus(patient.Disease);
 
             _ui.SetAcceptButtonStatus(acceptButtonActive);
             _ui.SetQuickHealButtonStatus(quickHealButtonActive);
 
-            _ui.ShowPatient(patient);
+            Show(patient);
         }
 
+        private void Show(Patient patient)
+        {
+            _soundManager.PlayRandomSoundByType(GameAudioType.Caught, Vector3.zero);
+            _ui.ShowPatient(patient);
+        }
 
         private bool GetAcceptButtonStatus()
         {

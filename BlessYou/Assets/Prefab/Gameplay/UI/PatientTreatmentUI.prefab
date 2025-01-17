@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 4151693786133608299}
   - component: {fileID: 963986737620418179}
   - component: {fileID: 5763213089693497022}
+  - component: {fileID: 2826761226007736665}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -159,6 +160,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2826761226007736665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235439661334659409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca05faa6cd0a463a898ec397b092670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &609706499098899665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1453,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 836861066757391670}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9989266
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1537,7 +1550,7 @@ GameObject:
   - component: {fileID: 1802092741886335274}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: DropArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1778,7 +1791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00003854384}
+  m_AnchoredPosition: {x: 0, y: -0.000006969087}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5019537960170046971
@@ -2173,7 +2186,7 @@ GameObject:
   - component: {fileID: 7913135472774056511}
   m_Layer: 5
   m_Name: Patient
-  m_TagString: Untagged
+  m_TagString: DropArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3018,7 +3031,7 @@ GameObject:
   - component: {fileID: 6903376632360040275}
   m_Layer: 5
   m_Name: Outline
-  m_TagString: Untagged
+  m_TagString: DropArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3219,7 +3232,7 @@ GameObject:
   - component: {fileID: 8427884444507649047}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: DropArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3265,7 +3278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

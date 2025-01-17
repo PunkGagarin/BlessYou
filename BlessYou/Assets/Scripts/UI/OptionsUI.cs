@@ -6,7 +6,7 @@ using Zenject;
 
 namespace UI
 {
-    public class OptionsDialog : BaseUIObject
+    public class OptionsUI : BaseUIObject
     {
         [SerializeField] private Button closeButton;
         [SerializeField] private Slider musicSlider;
@@ -26,8 +26,8 @@ namespace UI
 
         private void Start()
         {
-            // soundSlider.value = soundManager.Volume;
-            // musicSlider.value = musicManager.Volume;
+            soundSlider.value = soundManager.Volume;
+            musicSlider.value = musicManager.Volume;
         }
 
         private void Update()

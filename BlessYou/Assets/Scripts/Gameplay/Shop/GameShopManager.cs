@@ -111,22 +111,21 @@ namespace Gameplay.Shop
         private void UnlockNewBed()
         {
             _bedManager.UnlockNewBed();
+
+            int bedCost = _bedSettings.GetBedPrice(_bedsUnlocked);
+            _playerGoldManager.SpendGold(bedCost);
             _bedsUnlocked++;
 
-            // SetBedButtonStatus();
+            SetBedPrice();
             SetButtonStatuses();
         }
 
-        private void SetBedButtonStatus()
+        private void SetBedPrice()
         {
             if (_bedManager.HasBedsToUnlock())
             {
                 int newPrice = _bedSettings.GetBedPrice(_bedsUnlocked);
                 _ui.SetBedPrice(newPrice);
-            }
-            else
-            {
-                _ui.UnlockNewBedButton.interactable = false;
             }
         }
     }

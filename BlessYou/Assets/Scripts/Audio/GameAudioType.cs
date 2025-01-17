@@ -3,15 +3,14 @@
     public enum GameAudioType
     {
         ButtonClick = 1,
-        EnemyStep = 2,
-        PlayerStep = 3,
-        EnemyInPlayerZone = 4,
-        SafeZoneEnter = 5,
-        LevelComplete = 6,
-        LevelFailed = 7,
-        PowerUpPickedUp = 8,
-        
-        MainMenuBgm = 10,
-        GameplayBgm = 11,
+        Caught = 2,
+        Scissors = 3,
+        Saw = 4,
+        Scalpel = 6,
+        Money = 10,
+        Liquid = 11,
+
+
+        MainMenuBgm = 100
     }
 }

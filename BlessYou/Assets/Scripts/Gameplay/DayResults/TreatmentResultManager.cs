@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Gameplay.DayResults;
 using Gameplay.News;
+using Gameplay.Patients.Generation;
 using Gameplay.Treatment.Beds;
 using UnityEngine;
 using Zenject;
@@ -24,7 +25,7 @@ namespace Gameplay.Results
         {
             int goldDifference = CurrentTreatmentResults.GoldDifference;
 
-                _goldManager.AddGold(goldDifference);
+            _goldManager.AddGold(goldDifference);
 
             _bedManager.CleanBeds();
             _newspaperManager.GenerateDayNews(day, CurrentTreatmentResults);
@@ -47,6 +48,17 @@ namespace Gameplay.Results
             CurrentTreatmentResults.HealedPatients++;
             CurrentTreatmentResults.HealedPatientsList.Add(patient);
             Debug.Log("Patient is healed");
+        }
+
+        public void SetKickedOutPatient(Patient currentPatient)
+        {
+            var diseaseLight = currentPatient.Disease.HeavinessType;
+
+            float heavinessMultiplier = 1f;
+            if (diseaseLight == DiseaseHeavinessType.Light)
+            {
+                heavinessMultiplier = 0.5f;
+            }
         }
     }
 

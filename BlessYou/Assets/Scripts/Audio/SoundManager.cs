@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace Audio
 {
@@ -8,13 +9,13 @@ namespace Audio
         private const string PLAYER_PREFS_NAME = "SoundEffectVolume";
         private const float DEFAULT_VOLUME = .5f;
 
-        [SerializeField] private SoundsFactorySO soundsFactory;
+        [Inject] private SoundsFactorySO soundsFactory;
         [SerializeField] private AudioSource audioSource;
 
         private void Awake()
         {
-            // SetPlayerPrefsName();
-            // Volume = PlayerPrefs.GetFloat(PLAYER_PREFS_NAME, DEFAULT_VOLUME);
+            SetPlayerPrefsName();
+            Volume = PlayerPrefs.GetFloat(PLAYER_PREFS_NAME, DEFAULT_VOLUME);
         }
 
         private AudioClip GetRandomSoundByType(GameAudioType type)
