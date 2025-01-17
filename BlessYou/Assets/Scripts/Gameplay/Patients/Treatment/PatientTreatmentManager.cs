@@ -101,14 +101,7 @@ namespace Gameplay.Treatment
 
         private void TryUseInstrumentSound(InstrumentType type)
         {
-            var soundTypeToUse = GameAudioType.None;
-            if (type == InstrumentType.Ticks)
-                soundTypeToUse = GameAudioType.Scissors;
-            else if (type == InstrumentType.Saw)
-                soundTypeToUse = GameAudioType.Saw;
-            else if (type == InstrumentType.Scalpel)
-                soundTypeToUse = GameAudioType.Scalpel;
-
+            var soundTypeToUse = SoundMapper.GetSoundForInstrument(type);
             if (soundTypeToUse != GameAudioType.None)
                 _soundManager.PlayRandomSoundByType(soundTypeToUse, Vector3.zero);
         }
@@ -145,16 +138,9 @@ namespace Gameplay.Treatment
 
         private void TryUseMedicamentSound(MedicamentType type)
         {
-            var medicamentsWithSounds = new List<MedicamentType>
-            {
-                MedicamentType.BasilDrink,
-                MedicamentType.HolyWater,
-                MedicamentType.SageDrink,
-                MedicamentType.LicoriceRootTincture
-            };
-
-            if (medicamentsWithSounds.Contains(type))
-                _soundManager.PlayRandomSoundByType(GameAudioType.Liquid, Vector3.zero);
+            var soundTypeToUse = SoundMapper.GetSoundForMedicament(type);
+            if (soundTypeToUse != GameAudioType.None)
+                _soundManager.PlayRandomSoundByType(soundTypeToUse, Vector3.zero);
         }
 
         private void HealPatient()
