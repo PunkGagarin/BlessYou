@@ -47,6 +47,7 @@ namespace Gameplay.Patients.PatientQueue
         
         private void OnPatientDistributed()
         {
+            _patients.RemoveAt(0);
             if (_patients.Count == 0)
             {
                 HideNextPatientButton();
@@ -82,7 +83,7 @@ namespace Gameplay.Patients.PatientQueue
         {
             Debug.Log($"Proceed next patient");
             _currentPatient = _patients[0];
-            _patients.RemoveAt(0);
+            // _patients.RemoveAt(0);
             _view.MoveLine();
             var randomTime = _queueSettings.GetRandomQueueTime();
             _view.SetTimer(randomTime);
