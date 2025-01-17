@@ -43,7 +43,7 @@ namespace Gameplay.UI
 
         private void OnMainMenuButtonClicked()
         {
-            _gameplayManager.TogglePauseGame();
+            _gameplayManager.SetUnpause();
             _loader.Load(Scenes.MainMenuScene);
         }
 
