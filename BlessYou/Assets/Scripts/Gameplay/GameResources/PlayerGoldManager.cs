@@ -18,6 +18,7 @@ namespace Gameplay
             get => _gold;
             set
             {
+                Debug.Log($" Gold changed from {_gold} to {value}");
                 _gold = value; 
                 _goldUI.SetGold(value);
             }
@@ -56,18 +57,19 @@ namespace Gameplay
 
         public bool HasEnoughMoney(int familyFoodCost)
         {
-            return _gold >= familyFoodCost;
+            return Gold >= familyFoodCost;
         }
 
         public void SpendGold(int goldToSpend)
         {
-            _gold -= goldToSpend;
+            Gold -= goldToSpend;
             Gold = Mathf.Clamp(Gold, 0, 9999);
         }
 
         public void AddGold(int goldDifference)
         {
-            _gold += goldDifference;
+            Gold += goldDifference;
+            Gold = Mathf.Clamp(Gold, 0, 9999);
         }
     }
 

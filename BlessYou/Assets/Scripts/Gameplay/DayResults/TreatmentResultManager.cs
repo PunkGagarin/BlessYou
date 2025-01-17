@@ -17,16 +17,14 @@ namespace Gameplay.Results
         [Inject] private PlayerGoldManager _goldManager;
         [Inject] private NewspaperManager _newspaperManager;
 
-        public TreatmentResultInfo CurrentTreatmentResults { get; private set; } = new();
+
+        private TreatmentResultInfo CurrentTreatmentResults { get; set; } = new();
 
         public void CalculateResults(int day)
         {
             int goldDifference = CurrentTreatmentResults.GoldDifference;
 
-            if (goldDifference > 0)
                 _goldManager.AddGold(goldDifference);
-            else
-                _goldManager.SpendGold(goldDifference);
 
             _bedManager.CleanBeds();
             _newspaperManager.GenerateDayNews(day, CurrentTreatmentResults);

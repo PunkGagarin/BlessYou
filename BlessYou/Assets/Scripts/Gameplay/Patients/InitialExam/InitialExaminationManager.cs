@@ -2,6 +2,7 @@
 using Gameplay.Inventory;
 using Gameplay.Patients.Diseases;
 using Gameplay.Patients.Generation;
+using Gameplay.Results;
 using Gameplay.Treatment.Beds;
 using UnityEngine;
 using Zenject;
@@ -14,6 +15,7 @@ namespace Gameplay.Patients.InitialExam
         [Inject] private BedManager _bedManager;
         [Inject] private MedicamentaryManager _medicamentaryManager;
         [Inject] private InstrumentaryManager _instrumentaryManager;
+        [Inject] private TreatmentResultManager _resultManager;
 
         private Patient _currentPatient;
 
@@ -53,6 +55,8 @@ namespace Gameplay.Patients.InitialExam
         {
             _medicamentaryManager.Spend(_currentPatient.Disease.HealInfo.MedicamentType);
             _ui.Hide();
+            //setheal
+            _resultManager.SetHealedPatient(_currentPatient);
             OnPatientDistributed.Invoke();
         }
 
