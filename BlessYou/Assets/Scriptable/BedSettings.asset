@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: BedSettings
   m_EditorClassIdentifier: 
   <InitialUnlockedBeds>k__BackingField: 2
+  <MaxBedCount>k__BackingField: 4
+  <BedPrice>k__BackingField: 460000008c000000

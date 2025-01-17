@@ -12,13 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36608a5d90c140e4b1f87327e3c0e0d7, type: 3}
   m_Name: PatientQueueSO
   m_EditorClassIdentifier: 
-  _defaultPatients: 5
+  _defaultPatients: 20
   _patientsPerDay:
   - _key: 1
     _value: 3
   - _key: 2
+    _value: 4
+  - _key: 3
     _value: 5
-  - _key: 4
+  - _key: 6
     _value: 7
-  - _key: 7
-    _value: 10
+  - _key: 8
+    _value: 7
+  - _key: 8
+    _value: 7
+  - _key: 8
+    _value: 7
+  - _key: 8
+    _value: 7
+  - _key: 8
+    _value: 7
+  - _key: 8
+    _value: 7
+  _queueMinTimer: 20
+  _queueMaxTimer: 30
