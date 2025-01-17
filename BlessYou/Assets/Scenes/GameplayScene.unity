@@ -5219,6 +5219,7 @@ MonoBehaviour:
   _initialExaminationManager: {fileID: 1207211359}
   initialExaminationUI: {fileID: 71293842}
   _patientGenerationRepository: {fileID: 11400000, guid: 91c691a368da0c34cbc3edf7dd00f5a9, type: 2}
+  _patientVisualRepositorySo: {fileID: 11400000, guid: 1c912bda5d348264ea0e57a7320392c8, type: 2}
 --- !u!1 &2037527786
 GameObject:
   m_ObjectHideFlags: 0

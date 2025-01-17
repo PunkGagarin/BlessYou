@@ -18,6 +18,7 @@ namespace Gameplay
         public PatientRank Rank { get; set; }
         public Sex Sex { get; set; }
         public int Age { get; set; }
+        public PatientVisualInfo Visual { get; set; }
 
         public bool HasTreatedByInstrument { get; set; }
         public bool HasTreatedByMedicament { get; set; }

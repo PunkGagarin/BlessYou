@@ -8,6 +8,7 @@ namespace Gameplay
     public class PatientGenerator
     {
         [Inject] private PatientGenerationRepository _patientGenerationRepo;
+        [Inject] private PatientVisualRepositorySo _visualRepo;
 
         public Patient GeneratePatient()
         {
@@ -20,6 +21,9 @@ namespace Gameplay
             patient.Rank = _patientGenerationRepo.GetRandomRank();
             patient.Disease = _patientGenerationRepo.GetRandomDisease();
             patient.Age = Random.Range(18, 59);
+            
+            patient.Visual = _visualRepo.GetRandomVisualForPatient(patient);
+            
 
             return patient;
         }

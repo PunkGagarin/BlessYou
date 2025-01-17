@@ -22,11 +22,14 @@ namespace Gameplay.Patients
         [SerializeField]
         private InitialExaminationManager _initialExaminationManager;
 
-        [FormerlySerializedAs("_initialExaminationView")] [SerializeField]
+        [SerializeField]
         private InitialExaminationUI initialExaminationUI;
 
         [SerializeField]
         private PatientGenerationRepository _patientGenerationRepository;
+
+        [SerializeField]
+        private PatientVisualRepositorySo _patientVisualRepositorySo;
 
 
         public override void InstallBindings()
@@ -34,13 +37,16 @@ namespace Gameplay.Patients
             Container.BindInterfacesAndSelfTo<PatientQueueSettings>().FromInstance(patientQueueSettings).AsSingle();
             Container.BindInterfacesAndSelfTo<PatientQueueManager>().FromInstance(_queueManager).AsSingle();
             Container.BindInterfacesAndSelfTo<PatientQueueView>().FromInstance(_patientQueueView).AsSingle();
-            
+
             Container.BindInterfacesAndSelfTo<InitialExaminationManager>().FromInstance(_initialExaminationManager)
                 .AsSingle();
             Container.BindInterfacesAndSelfTo<InitialExaminationUI>().FromInstance(initialExaminationUI)
                 .AsSingle();
-            
-            Container.BindInterfacesAndSelfTo<PatientGenerationRepository>().FromInstance(_patientGenerationRepository).AsSingle();
+
+            Container.BindInterfacesAndSelfTo<PatientGenerationRepository>().FromInstance(_patientGenerationRepository)
+                .AsSingle();
+            Container.BindInterfacesAndSelfTo<PatientVisualRepositorySo>().FromInstance(_patientVisualRepositorySo)
+                .AsSingle();
             Container.BindInterfacesAndSelfTo<PatientGenerator>().AsSingle();
         }
     }

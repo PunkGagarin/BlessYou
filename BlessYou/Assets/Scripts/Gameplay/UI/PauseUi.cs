@@ -57,7 +57,5 @@ namespace Gameplay.UI
             _gameplayManager.SetPause();
             Show();
         }
-
     }
-
 }

@@ -12,41 +12,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b943ab775824e2f921e3c450eefe50c, type: 3}
   m_Name: PatientVisualRepository
   m_EditorClassIdentifier: 
-  _bodyTypes:
+  _diseaseSprites:
   - _key: 0
-    _value: {fileID: 0}
-  _parts:
+    _value: {fileID: 21300000, guid: 3be79db34a061614fa0e442a11e8c700, type: 3}
+  - _key: 1
+    _value: {fileID: 21300000, guid: a3d89c2b2a5656048ac9ae5ea24e3c2b, type: 3}
+  - _key: 2
+    _value: {fileID: 21300000, guid: 4015fd5febc1a214eb055680ceb76296, type: 3}
+  - _key: 5
+    _value: {fileID: 21300000, guid: 7ca57b984afd62c439c89452d681525c, type: 3}
+  - _key: 4
+    _value: {fileID: 21300000, guid: 1bba35ab56233694ebde7dd1dc853eb3, type: 3}
+  - _key: 3
+    _value: {fileID: 21300000, guid: 164beab7ee8861f429e2391417b339a3, type: 3}
+  - _key: 6
+    _value: {fileID: 21300000, guid: 9c99ea78c86a44c4385d0a56bee9f3a4, type: 3}
+  _skinSprites:
+  - {fileID: 21300000, guid: dd6d5e3aa8fa49a47beef94e86ecd3a0, type: 3}
+  - {fileID: 21300000, guid: 10c32340d770c1a44bfb7f8beecc1900, type: 3}
+  - {fileID: 21300000, guid: d4888eb3f4d177a4db5e6c872973cb55, type: 3}
+  _beardOutlines:
+  - _key: 0
+    _value: {fileID: 21300000, guid: 2d3f85800d3153942bf9e43dc45c4ca9, type: 3}
+  - _key: 1
+    _value: {fileID: 21300000, guid: 5a6353e203676d141878aa9a33dd34d9, type: 3}
+  _beardSprites:
   - _key: 0
     _value:
-    - _key: 0
-      _value:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-    - _key: 1
-      _value:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-    - _key: 2
-      _value:
-      - {fileID: 0}
-      - {fileID: 0}
+    - {fileID: 21300000, guid: 410d4cbcd919b4f40b6df0b03de94d8a, type: 3}
+    - {fileID: 21300000, guid: 00e6284a64f15094aaa192618335c0dd, type: 3}
+    - {fileID: 21300000, guid: 0dcd0d1d1a69165489fb7bce71009f94, type: 3}
   - _key: 1
     _value:
-    - _key: 0
-      _value:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-    - _key: 1
-      _value:
-      - {fileID: 0}
-      - {fileID: 0}
-      - {fileID: 0}
-    - _key: 2
-      _value:
-      - {fileID: 0}
-      - {fileID: 0}
+    - {fileID: 21300000, guid: 8bfd3ff795d5c8d4a8d1558c2b421b9a, type: 3}
+    - {fileID: 21300000, guid: 4fb16524e9078d745a99be890bff6cca, type: 3}
+    - {fileID: 21300000, guid: d4759d26d6ee61445b84f8c32e8c1a44, type: 3}
+  _hairOutlines:
+  - _key: 0
+    _value: {fileID: 21300000, guid: f5b9713822113d745825f82aa0002e39, type: 3}
+  - _key: 1
+    _value: {fileID: 21300000, guid: d29983d86687c2f44ac474e620ec8dec, type: 3}
+  - _key: 2
+    _value: {fileID: 21300000, guid: ac4a995e063fed940bff80a7822295da, type: 3}
+  _hairSprites:
+  - _key: 0
+    _value:
+    - {fileID: 21300000, guid: b5179219b9baeee4b8fe860c29ea345f, type: 3}
+    - {fileID: 21300000, guid: cb5a930d4ad3e8a44813c70c432bb4d9, type: 3}
+    - {fileID: 21300000, guid: 0953c030df215174d99dc2249572110c, type: 3}
+  - _key: 1
+    _value:
+    - {fileID: 21300000, guid: 893dca98d8a59344ea94adfcd1dd9d3f, type: 3}
+    - {fileID: 21300000, guid: bbc0ee63227d3c648bc74fa9224bd825, type: 3}
+    - {fileID: 21300000, guid: af395a9ecf10ae0489c2d862afdcf26f, type: 3}
+  - _key: 2
+    _value:
+    - {fileID: 21300000, guid: 95c6d4afc458ea949ac30187f049ecf9, type: 3}
+    - {fileID: 21300000, guid: 68ab7477b947f8f44914e0f78f148a2f, type: 3}
+    - {fileID: 21300000, guid: d0f6e9af354ab424b91b94aad54ea72e, type: 3}
