@@ -85,8 +85,8 @@ namespace Gameplay.Shop
             if (!isInited)
                 InitUi();
 
-            _ui.Show();
             SetButtonStatuses();
+            _ui.Show();
         }
 
         private void SetButtonStatuses()
@@ -99,6 +99,8 @@ namespace Gameplay.Shop
             {
                 int goldPrice = _medicamentRepository.GetPriceFor(slot.Type);
                 bool hasGold = _playerGoldManager.HasEnoughMoney(goldPrice);
+                int count = _medicamentaryManager.GetItemCount(slot.Type);
+                slot.SetCount(count);
                 slot.SetButtonState(hasGold);
             }
         }
