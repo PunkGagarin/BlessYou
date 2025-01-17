@@ -11,8 +11,8 @@ public class ProjectInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<Loader>().AsSingle();
-        // Container.Bind<SoundManager>().FromInstance(soundManager).AsSingle();
-        // Container.Bind<MusicManager>().FromInstance(musicManager).AsSingle();
+        Container.Bind<SoundManager>().FromInstance(soundManager).AsSingle();
+        Container.Bind<MusicManager>().FromInstance(musicManager).AsSingle();
     }
     
 }

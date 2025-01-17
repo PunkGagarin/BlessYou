@@ -13,10 +13,10 @@ namespace Audio
 
         private void Awake()
         {
-            audioSource = GetComponent<AudioSource>();
-            SetPlayerPrefsName();
-            Volume = PlayerPrefs.GetFloat(PLAYER_PREFS_NAME, DEFAULT_VOLUME);
-            audioSource.volume = Volume;
+            // audioSource = GetComponent<AudioSource>();
+            // SetPlayerPrefsName();
+            // Volume = PlayerPrefs.GetFloat(PLAYER_PREFS_NAME, DEFAULT_VOLUME);
+            // audioSource.volume = Volume;
         }
         
         public override void ChangeVolume()

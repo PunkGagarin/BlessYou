@@ -26,8 +26,8 @@ namespace UI
 
         private void Start()
         {
-            soundSlider.value = soundManager.Volume;
-            musicSlider.value = musicManager.Volume;
+            // soundSlider.value = soundManager.Volume;
+            // musicSlider.value = musicManager.Volume;
         }
 
         private void Update()

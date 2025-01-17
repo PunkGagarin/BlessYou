@@ -13,8 +13,8 @@ namespace Audio
 
         private void Awake()
         {
-            SetPlayerPrefsName();
-            Volume = PlayerPrefs.GetFloat(PLAYER_PREFS_NAME, DEFAULT_VOLUME);
+            // SetPlayerPrefsName();
+            // Volume = PlayerPrefs.GetFloat(PLAYER_PREFS_NAME, DEFAULT_VOLUME);
         }
 
         private AudioClip GetRandomSoundByType(GameAudioType type)

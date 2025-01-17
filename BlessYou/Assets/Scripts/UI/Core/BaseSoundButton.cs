@@ -9,7 +9,7 @@ namespace UI.Core
     {
         private Button button;
         
-        [Inject] private SoundManager soundManager;
+        // [Inject] private SoundManager soundManager;
 
         private void Awake()
         {
@@ -24,7 +24,7 @@ namespace UI.Core
 
         private void OnButtonClicked()
         {
-            soundManager.PlaySoundByType(GameAudioType.ButtonClick, 0, Vector3.zero);
+            // soundManager.PlaySoundByType(GameAudioType.ButtonClick, 0, Vector3.zero);
         }
     }
 }

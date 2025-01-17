@@ -6,7 +6,7 @@ namespace Gameplay.Inventory.UI.Base
 {
     public class SlotDragHandler<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        private Canvas canvas; // Canvas, чтобы учитывать его масштаб
+        private Canvas canvas;
         private RectTransform rectTransform;
         private CanvasGroup canvasGroup;
         private Vector2 originalPosition;
@@ -20,7 +20,7 @@ namespace Gameplay.Inventory.UI.Base
         {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            canvas = GetComponentInParent<Canvas>(); // Находим Canvas, на котором находится объект
+            canvas = GetComponentInParent<Canvas>();
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -57,6 +57,11 @@ namespace Gameplay.Inventory.UI.Base
             rectTransform.anchoredPosition = originalPosition;
 
             // Восстанавливаем взаимодействие объекта
+            canvasGroup.blocksRaycasts = true;
+        }
+
+        private void OnDisable()
+        {
             canvasGroup.blocksRaycasts = true;
         }
     }
