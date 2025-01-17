@@ -15,10 +15,10 @@ MonoBehaviour:
   <FamilyDaysWithoutFood>k__BackingField: 2
   _familyCostPerDays:
   - _key: 1
-    _value: 150
+    _value: 20
   - _key: 4
-    _value: 200
+    _value: 30
   - _key: 10
-    _value: 250
+    _value: 35
   - _key: 15
-    _value: 300
+    _value: 40
