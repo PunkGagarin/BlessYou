@@ -1,5 +1,6 @@
 ﻿using Gameplay.Results;
-using Gameplay.Treatment;
+using Gameplay.UI;
+using UI;
 using UnityEngine;
 using Zenject;
 
@@ -22,6 +23,12 @@ namespace Gameplay
 
         [SerializeField]
         private LoseView _loseView;
+        
+        [SerializeField]
+        private PauseUi _pauseUI;
+
+        [SerializeField]
+        private PauseManager _pauseManager;
 
         public override void InstallBindings()
         {
@@ -30,6 +37,8 @@ namespace Gameplay
             Container.Bind<EndDayButtonView>().FromInstance(_endDayButtonView).AsSingle();
             Container.Bind<LoseView>().FromInstance(_loseView).AsSingle();
             Container.Bind<GameManger>().FromInstance(_gameManger).AsSingle();
+            Container.Bind<PauseUi>().FromInstance(_pauseUI).AsSingle();
+            Container.Bind<PauseManager>().FromInstance(_pauseManager).AsSingle();
         }
     }
 }

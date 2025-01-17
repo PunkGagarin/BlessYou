@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 6846739039645422075}
   - component: {fileID: 6628780756102790961}
   m_Layer: 5
-  m_Name: OptionsDialog
+  m_Name: OptionsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
