@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Audio;
 using Gameplay.Beds;
+using Gameplay.DayResults;
 using Gameplay.Inventory;
 using Gameplay.Patients.PatientQueue;
 using Gameplay.Results;

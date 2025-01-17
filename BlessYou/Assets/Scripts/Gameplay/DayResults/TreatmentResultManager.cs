@@ -1,14 +1,10 @@
-﻿using System.Collections.Generic;
-using Gameplay.DayResults;
-using Gameplay.News;
-using Gameplay.Patients.Generation;
+﻿using Gameplay.News;
 using Gameplay.Treatment.Beds;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Results
+namespace Gameplay.DayResults
 {
-
     /// <summary>
     /// Отвечает за результаты лечения и дальнейшую судьбу пациентов
     /// </summary>
@@ -52,14 +48,8 @@ namespace Gameplay.Results
 
         public void SetKickedOutPatient(Patient currentPatient)
         {
-            var diseaseLight = currentPatient.Disease.HeavinessType;
-
-            float heavinessMultiplier = 1f;
-            if (diseaseLight == DiseaseHeavinessType.Light)
-            {
-                heavinessMultiplier = 0.5f;
-            }
+            //todo: add multiplier
+            SetDeadPatient(currentPatient);
         }
     }
-
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Audio;
 using Gameplay.GameResources;
+using Gameplay.Patients.Generation;
 using UnityEngine;
 using Zenject;
 
@@ -21,7 +22,7 @@ namespace Gameplay
             set
             {
                 // Debug.Log($" Gold changed from {_gold} to {value}");
-                _gold = value; 
+                _gold = value;
                 _soundManager.PlaySoundByType(GameAudioType.Money, 0, Vector3.zero);
                 _goldUI.SetGold(value);
             }
@@ -34,7 +35,7 @@ namespace Gameplay
 
         public int AddGoldForHealedPatient(Patient patient)
         {
-            int goldSettingsGoldPerHealed = _goldSettings.GoldPerHealed;    
+            int goldSettingsGoldPerHealed = _goldSettings.GoldPerHealed;
             Gold += goldSettingsGoldPerHealed;
             Gold = Mathf.Clamp(Gold, 0, 9999);
             return goldSettingsGoldPerHealed;
@@ -42,12 +43,22 @@ namespace Gameplay
 
         public int GetGoldForHealedPatient(Patient patient)
         {
-            return _goldSettings.GoldPerHealed;
+            int baseGold = _goldSettings.GoldPerHealed;
+            int rank = (int)patient.Rank;
+            float baseRankMultiplier = _goldSettings.RankMultiplier;
+
+            float rankMultiplier = rank * baseRankMultiplier;
+            float heavinessMultiplier = 1f;
+            if (patient.Disease.HeavinessType == DiseaseHeavinessType.Heavy)
+                heavinessMultiplier = 1.5f;
+
+            float finalValue = baseGold * rankMultiplier * heavinessMultiplier;
+            return Mathf.CeilToInt(finalValue);
         }
-        
+
         public int GetGoldForDeadPatient(Patient patient)
         {
-            return -_goldSettings.GoldPerDead;
+            return -GetGoldForHealedPatient(patient);
         }
 
         public int GetPenaltyForDeadPatient(Patient patient)

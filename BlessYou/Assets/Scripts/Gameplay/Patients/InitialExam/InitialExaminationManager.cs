@@ -1,5 +1,6 @@
 ﻿using System;
 using Audio;
+using Gameplay.DayResults;
 using Gameplay.Inventory;
 using Gameplay.Patients.Diseases;
 using Gameplay.Patients.Generation;
@@ -7,6 +8,7 @@ using Gameplay.Results;
 using Gameplay.Treatment.Beds;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Gameplay.Patients.InitialExam
 {
@@ -49,7 +51,7 @@ namespace Gameplay.Patients.InitialExam
         public void KickOutPatient()
         {
             _ui.Hide();
-            _resultManager.SetKickedOutPatient(_currentPatient);
+            _resultManager.SetDeadPatient(_currentPatient);
             OnPatientDistributed.Invoke();
         }
 
@@ -57,7 +59,7 @@ namespace Gameplay.Patients.InitialExam
         {
             _medicamentaryManager.Spend(_currentPatient.Disease.HealInfo.MedicamentType);
             _ui.Hide();
-            _resultManager.SetHealedPatient(_currentPatient);
+            _resultManager.SetKickedOutPatient(_currentPatient);
             OnPatientDistributed.Invoke();
         }
 

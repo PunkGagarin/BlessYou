@@ -10,6 +10,9 @@ namespace Gameplay
 
         [field: SerializeField]
         public int GoldPerHealed { get; private set; }
+        
+        [field: SerializeField]
+        public float RankMultiplier { get; private set; }
 
         [field: SerializeField]
         public int GoldPerDead { get; private set; }
