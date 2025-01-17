@@ -35,4 +35,4 @@ MonoBehaviour:
   - _key: 8
     _value: 7
   _queueMinTimer: 20
-  _queueMaxTimer: 40
+  _queueMaxTimer: 30

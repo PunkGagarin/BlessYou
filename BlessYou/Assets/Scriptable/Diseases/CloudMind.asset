@@ -19,5 +19,5 @@ MonoBehaviour:
     <InstrumentType>k__BackingField: 0
     <MedicamentType>k__BackingField: 6
     <ExtraMedType>k__BackingField: 9
-    <HealTime>k__BackingField: 30
-    <TreatmentTime>k__BackingField: 50
+    <HealTime>k__BackingField: 29
+    <TreatmentTime>k__BackingField: 25
