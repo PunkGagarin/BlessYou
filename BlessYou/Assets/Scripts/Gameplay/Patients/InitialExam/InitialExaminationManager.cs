@@ -51,7 +51,7 @@ namespace Gameplay.Patients.InitialExam
         public void KickOutPatient()
         {
             _ui.Hide();
-            _resultManager.SetDeadPatient(_currentPatient);
+            _resultManager.SetKickedOutPatient(_currentPatient);
             OnPatientDistributed.Invoke();
         }
 
@@ -59,7 +59,7 @@ namespace Gameplay.Patients.InitialExam
         {
             _medicamentaryManager.Spend(_currentPatient.Disease.HealInfo.MedicamentType);
             _ui.Hide();
-            _resultManager.SetKickedOutPatient(_currentPatient);
+            _resultManager.SetHealedPatient(_currentPatient);
             OnPatientDistributed.Invoke();
         }
 

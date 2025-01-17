@@ -17,13 +17,18 @@ namespace Gameplay.DayResults
         {
             if (currentDay <= 1)
                 return;
-            int familyFoodCost = _familySettings.GetFamilyFoodCostForDay(FamilyDaysWithoutFood + 1);
+            int familyFoodCost = GetFamilyFoodCostForDay(currentDay);
             bool hasMoney = _goldManager.HasEnoughMoney(familyFoodCost);
 
             if (hasMoney)
                 FeedFamily(familyFoodCost);
             else
                 StarvateFamily();
+        }
+
+        private int GetFamilyFoodCostForDay(int day)
+        {
+            return _familySettings.GetFamilyFoodCostForDay(day);
         }
 
         private void FeedFamily(int familyFoodCost)
@@ -41,5 +46,9 @@ namespace Gameplay.DayResults
             }
         }
 
+        public int GetFamilyCost(int day)
+        {
+            return GetFamilyFoodCostForDay(day);
+        }
     }
 }

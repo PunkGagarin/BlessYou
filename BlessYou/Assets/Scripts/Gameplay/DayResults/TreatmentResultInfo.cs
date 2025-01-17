@@ -9,5 +9,6 @@ namespace Gameplay.DayResults
         public int HealedPatients { get; set; }
         public int DeadPatients { get; set; }
         public int GoldDifference { get; set; }
+        public int FamilyCost { get; set; }
     }
 }
