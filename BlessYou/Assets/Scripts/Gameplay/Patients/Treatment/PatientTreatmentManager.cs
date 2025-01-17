@@ -22,7 +22,7 @@ namespace Gameplay.Treatment
         [Inject] private PatientQueueManager _patientQueue;
         [Inject] private SoundManager _soundManager;
 
-        private (Patient patient, BedSpotView bed) _bedWithCurrentPatient;
+        private Patient _currentPatient;
 
         public event Action EndOfTreatment = delegate { };
 
@@ -46,28 +46,28 @@ namespace Gameplay.Treatment
             _patientQueue.EndOfPatientQueue -= EndTreatmentIfNoPatientsLeft;
         }
 
-        private void ShowPatientTreatmentView(Patient patient, BedSpotView bed)
+        private void ShowPatientTreatmentView(Patient patient)
         {
-            _bedWithCurrentPatient = (patient, bed);
+            _currentPatient = patient;
             _view.ShowPatientInfo(patient);
         }
 
-        private void FinishCurrentTreatmentPhase(Patient patient, BedSpotView view, BedInfo bedInfo)
+        private void FinishCurrentTreatmentPhase(Patient patient)
         {
-            if (view == _bedWithCurrentPatient.bed)
+            if (patient == _currentPatient)
                 HideUI();
 
-            if (bedInfo.CurrentTreatmentType == TreatmentType.View)
+            if (patient.CurrentTreatmentType == TreatmentType.View)
             {
                 patient.IsDead = true;
                 _treatmentResults.SetDeadPatient(patient);
-                _bedManager.CleanBed(view);
+                _bedManager.CleanBed(patient);
             }
             else
             {
                 patient.IsHealed = true;
                 _treatmentResults.SetHealedPatient(patient);
-                _bedManager.CleanBed(view);
+                _bedManager.CleanBed(patient);
             }
             CheckDayForFinish();
         }
@@ -82,19 +82,20 @@ namespace Gameplay.Treatment
             bool hasNoPatientsOnBeds = _bedManager.HasNoPatientsLeft();
             bool hasPatientsInQueue = _patientQueue.HasPatientsInQueue();
 
+            Debug.Log($"checking day for finish, " +
+                      $"has no patients on beds: {hasNoPatientsOnBeds}, has patients in queue: {hasPatientsInQueue}");
             if (!hasPatientsInQueue && hasNoPatientsOnBeds)
                 EndOfTreatment.Invoke();
         }
 
         private void TryUseInstrument(InstrumentType type)
         {
-            var patient = _bedWithCurrentPatient.patient;
-            var diseaseInfo = patient.Disease;
+            var diseaseInfo = _currentPatient.Disease;
             if (type == diseaseInfo.HealInfo.InstrumentType)
             {
-                patient.HasTreatedByInstrument = true;
+                _currentPatient.HasTreatedByInstrument = true;
                 Debug.Log("мы лечим правильным инструментом");
-                if (HasNoTreatmentNeeds(patient))
+                if (HasNoTreatmentNeeds(_currentPatient))
                     StartTreatmentForCurrentPatient();
             }
             TryUseInstrumentSound(type);
@@ -120,12 +121,13 @@ namespace Gameplay.Treatment
         private void StartTreatmentForCurrentPatient()
         {
             HideUI();
-            _bedManager.StartHealFor(_bedWithCurrentPatient.bed);
+            _currentPatient.CurrentTreatmentType = TreatmentType.Healing;
+            _bedManager.StartHealFor(_currentPatient);
         }
 
         private void TryUseMedicament(MedicamentType type)
         {
-            var patient = _bedWithCurrentPatient.patient;
+            var patient = _currentPatient;
             var diseaseInfo = patient.Disease;
             if (type == diseaseInfo.HealInfo.MedicamentType)
             {
@@ -142,16 +144,6 @@ namespace Gameplay.Treatment
             var soundTypeToUse = SoundMapper.GetSoundForMedicament(type);
             if (soundTypeToUse != GameAudioType.None)
                 _soundManager.PlayRandomSoundByType(soundTypeToUse, Vector3.zero);
-        }
-
-        private void HealPatient()
-        {
-            Debug.Log("Назначили пациенту лечение пациента");
-            _bedWithCurrentPatient.bed.TurnOffInteract();
-            _bedWithCurrentPatient.patient.HasTreatment = true;
-            _view.Hide();
-
-            EndTreatmentIfNoPatientsLeft();
         }
 
         private void EndTreatmentIfNoPatientsLeft()

@@ -17,8 +17,8 @@ namespace Gameplay.Treatment.Beds
 
         private readonly Dictionary<BedSpotView, BedInfo> _beds = new();
 
-        public event Action<Patient, BedSpotView> OnBedWithPatientInteracted = delegate { };
-        public event Action<Patient, BedSpotView, BedInfo> OnBedTimerEnds = delegate { };
+        public event Action<Patient> OnBedWithPatientInteracted = delegate { };
+        public event Action<Patient> OnBedTimerEnds = delegate { };
 
         private void Start()
         {
@@ -45,13 +45,13 @@ namespace Gameplay.Treatment.Beds
                 }
 
                 bedView.OnClicked += bedViewOnOnBedClicked(bedView);
-                bedView.OnTimerEnds += EndTimerForBed(bedView, bedInfo);
+                bedView.OnTimerEnds += EndTimerForBed(bedInfo);
             }
         }
 
-        private Action EndTimerForBed(BedSpotView bedView, BedInfo bedInfo)
+        private Action EndTimerForBed(BedInfo bedInfo)
         {
-            return () => OnBedTimerEnds.Invoke(bedInfo.Patient, bedView, bedInfo);
+            return () => OnBedTimerEnds.Invoke(bedInfo.Patient);
         }
 
         private void OnDestroy()
@@ -59,7 +59,7 @@ namespace Gameplay.Treatment.Beds
             foreach (var bedView in _beds.Keys)
             {
                 bedView.OnClicked -= bedViewOnOnBedClicked(bedView);
-                bedView.OnTimerEnds -= EndTimerForBed(bedView, _beds[bedView]);
+                bedView.OnTimerEnds -= EndTimerForBed(_beds[bedView]);
             }
         }
 
@@ -70,7 +70,7 @@ namespace Gameplay.Treatment.Beds
 
         private void OnBedInterracted(BedSpotView bedView)
         {
-            OnBedWithPatientInteracted.Invoke(_beds[bedView].Patient, bedView);
+            OnBedWithPatientInteracted.Invoke(_beds[bedView].Patient);
         }
 
         public void LayDownPatientToFirstFreeBed(Patient patient)
@@ -80,7 +80,6 @@ namespace Gameplay.Treatment.Beds
                 if (!bed.HasPatient)
                 {
                     bed.Patient = patient;
-                    bed.CurrentTreatmentType = TreatmentType.View;
                     view.SetPatient(patient);
                     return;
                 }
@@ -122,7 +121,7 @@ namespace Gameplay.Treatment.Beds
 
         public bool HasNoPatientsLeft()
         {
-            return !_beds.Any( bed => bed.Value.HasPatient);
+            return !_beds.Any(bed => bed.Value.HasPatient);
         }
 
         public List<Patient> GetAllPatientsInBeds()
@@ -147,20 +146,24 @@ namespace Gameplay.Treatment.Beds
             return _beds.Any(bed => !bed.Value.IsUnlocked);
         }
 
-        public void CleanBed(BedSpotView view)
+        public void CleanBed(Patient patient)
         {
-            var bed = _beds.FirstOrDefault(bed => bed.Value.HasPatient);
-
-            bed.Value.Patient = null;
-            view.CleanFromPatient();
+            var bedInfo = _beds
+                .FirstOrDefault(bed => 
+                    bed.Value.HasPatient && bed.Value.Patient == patient);
+            
+            
+            bedInfo.Value.Patient = null;
+            bedInfo.Key.CleanFromPatient();
         }
 
-        public void StartHealFor(BedSpotView bed)
+        public void StartHealFor(Patient patient)
         {
-            BedInfo bedInfo = _beds[bed];
-            bed.TurnOffInteract();
-            bed.SetTimer(bedInfo.Patient.Disease.HealInfo.HealTime);
-            bedInfo.CurrentTreatmentType = TreatmentType.Healing;
+            var bedInfo = _beds
+                .FirstOrDefault(bed => 
+                    bed.Value.HasPatient && bed.Value.Patient == patient);
+            bedInfo.Key.TurnOffInteract();
+            bedInfo.Key.SetTimer(bedInfo.Value.Patient.Disease.HealInfo.HealTime);
         }
     }
 }

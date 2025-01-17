@@ -1,5 +1,6 @@
 ﻿using Gameplay.Patients.Diseases;
 using Gameplay.Patients.Generation;
+using Gameplay.Treatment.Beds;
 using UnityEngine;
 
 namespace Gameplay
@@ -19,6 +20,7 @@ namespace Gameplay
         public Sex Sex { get; set; }
         public int Age { get; set; }
         public PatientVisualInfo Visual { get; set; }
+        public TreatmentType CurrentTreatmentType { get; set; } = TreatmentType.View;
 
         public bool HasTreatedByInstrument { get; set; }
         public bool HasTreatedByMedicament { get; set; }

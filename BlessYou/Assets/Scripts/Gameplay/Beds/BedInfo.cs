@@ -9,7 +9,7 @@ namespace Gameplay.Treatment.Beds
         public Patient Patient { get; set; }
         public bool HasPatient => Patient != null;
         
-        public TreatmentType CurrentTreatmentType { get; set; } = TreatmentType.View;
+        // public TreatmentType CurrentTreatmentType { get; set; } = TreatmentType.View;
     }
 
 }
