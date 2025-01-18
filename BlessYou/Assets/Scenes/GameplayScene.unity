@@ -6506,7 +6506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EndDayButton>k__BackingField: {fileID: 1635127077}
-  <Arrow>k__BackingField: {fileID: 0}
+  <Arrow>k__BackingField: {fileID: 11657783}
 --- !u!222 &80304467165419542
 CanvasRenderer:
   m_ObjectHideFlags: 0
