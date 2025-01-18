@@ -1,7 +1,10 @@
 ﻿using Gameplay.Base;
+using Gameplay.Patients.Generation;
 using Gameplay.Patients.Treatment;
 using Gameplay.Patients.UI;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Gameplay.Patients.InitialExam
@@ -15,6 +18,9 @@ namespace Gameplay.Patients.InitialExam
 
         [field: SerializeField]
         public Button QuickHealButton { get; private set; }
+
+        [field: SerializeField]
+        public TextMeshProUGUI QuickHealButtonText { get; private set; }
 
         [field: SerializeField]
         public Button EventButton { get; private set; }
@@ -31,6 +37,9 @@ namespace Gameplay.Patients.InitialExam
         [field: SerializeField]
         private PatientTreatmentVisualizer _visualizer;
 
+        [FormerlySerializedAs("_heavySicknessColor")] [SerializeField]
+        private Color _color;
+
         public void ShowPatient(Patient patient)
         {
             Debug.Log("Показываем информацию о пациенте");
@@ -44,8 +53,20 @@ namespace Gameplay.Patients.InitialExam
             AcceptButton.interactable = acceptButtonActive;
         }
 
-        public void SetQuickHealButtonStatus(bool quickHealButtonActive)
+        public void SetQuickHealButtonStatus(bool quickHealButtonActive, string quickHealText,
+            DiseaseHeavinessType diseaseHeavinessType)
         {
+            if (diseaseHeavinessType == DiseaseHeavinessType.Light)
+            {
+                string hexColor = ColorUtility.ToHtmlStringRGBA(_color);
+
+                string disTypeText = $"<color=#{hexColor}>{quickHealText}</color>";
+                QuickHealButtonText.text = $"QuickHeal\n(-{disTypeText})";
+            }
+            else
+            {
+                QuickHealButtonText.text = "QuickHeal";
+            }
             QuickHealButton.interactable = quickHealButtonActive;
         }
     }

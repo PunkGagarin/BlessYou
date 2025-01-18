@@ -76,7 +76,8 @@ namespace Gameplay.Patients.InitialExam
             bool quickHealButtonActive = GetQuickHealButtonStatus(patient.Disease);
 
             _ui.SetAcceptButtonStatus(acceptButtonActive);
-            _ui.SetQuickHealButtonStatus(quickHealButtonActive);
+            _ui.SetQuickHealButtonStatus(quickHealButtonActive, 
+                patient.Disease.HealInfo.MedicamentType.ToString(), patient.Disease.HeavinessType);
 
             Show(patient);
         }

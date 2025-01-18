@@ -883,7 +883,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -48.2257, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &296985674617252000
 CanvasRenderer:
@@ -940,10 +940,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.5
+  m_fontSize: 29
   m_fontSizeBase: 27.5
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1035,11 +1035,13 @@ MonoBehaviour:
   _content: {fileID: 1590205313728094338}
   <AcceptButton>k__BackingField: {fileID: 1256562162637723188}
   <QuickHealButton>k__BackingField: {fileID: 5087973811500880028}
+  <QuickHealButtonText>k__BackingField: {fileID: 4583223355524529188}
   <EventButton>k__BackingField: {fileID: 0}
   <RejectButton>k__BackingField: {fileID: 64744721114171466}
   <CloseButton>k__BackingField: {fileID: 8102650916436230402}
   <PatientInfoUI>k__BackingField: {fileID: 4376460629374125417}
   _visualizer: {fileID: 4555002386336969825}
+  _color: {r: 0.22429992, g: 0.8490566, b: 0.15619439, a: 1}
 --- !u!114 &4376460629374125417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,7 +2029,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5215588477348703533, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5525890397727753063, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
       propertyPath: m_Name
