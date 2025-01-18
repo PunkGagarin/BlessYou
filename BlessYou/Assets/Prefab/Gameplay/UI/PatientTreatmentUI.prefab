@@ -1638,7 +1638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000014611245}
+  m_AnchoredPosition: {x: 0, y: 0.00003947013}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5019537960170046971
@@ -4517,6 +4517,83 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8915102586209936405}
     m_Modifications:
+    - target: {fileID: 294414089702239372, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_text
+      value: This is the main menu of the patient's examination
+      objectReference: {fileID: 0}
+    - target: {fileID: 294414089702239372, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 294414089702239372, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 294414089702239372, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 651099655228005961, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 197.4313
+      objectReference: {fileID: 0}
+    - target: {fileID: 651099655228005961, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 62.4946
+      objectReference: {fileID: 0}
+    - target: {fileID: 651099655228005961, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 651099655228005961, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -282.62463
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669076524677547282, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_text
+      value: Compare the patient's complaints with the diseases from the glossary
+        and use the necessary medicines and tools to treat the patient.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669076524677547282, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669076524677547282, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034771673787844912, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161991488254805774, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 499.8074
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161991488254805774, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 156.0489
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161991488254805774, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.0006866
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161991488254805774, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -145.3399
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836176188598057732, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836176188598057732, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836176188598057732, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5215588477348703533, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4604,6 +4681,54 @@ PrefabInstance:
     - target: {fileID: 5639049343981093071, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235396567753931994, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 499.8074
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235396567753931994, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 349.146
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235396567753931994, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.0006714
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235396567753931994, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.790627
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066201710897837702, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 499.8074
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066201710897837702, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 156.0489
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066201710897837702, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.0006866
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066201710897837702, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 203.80714
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223648659696368343, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1213.5596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223648659696368343, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -282.826
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223648659696368343, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223648659696368343, guid: 0041b41731616de4aa76a39c0772fb63, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.437378
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
